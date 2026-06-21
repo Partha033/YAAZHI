@@ -1,0 +1,80 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-ink: var(--ink);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-gold-deep: var(--gold-deep);
+  --color-ember: var(--ember);
+  --color-bone: var(--bone);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --font-display: "Outfit", system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", "Times New Roman", serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+:root {
+  --background: oklch(0.08 0.01 0);
+  --foreground: oklch(0.95 0.01 0);
+  --ink: oklch(0.03 0.0 0);
+  --gold: oklch(0.82 0.12 85);
+  --gold-soft: oklch(0.90 0.08 85);
+  --gold-deep: oklch(0.65 0.14 75);
+  --ember: oklch(0.65 0.18 45);
+  --bone: oklch(0.95 0.02 80);
+  --border: oklch(0.82 0.12 85 / 0.15);
+  --muted: oklch(0.15 0.01 0);
+  --muted-foreground: oklch(0.60 0.02 0);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    background-color: var(--color-ink);
+  }
+  body {
+    background-color: transparent;
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: var(--gold);
+    color: var(--ink);
+  }
+}
+
+@utility text-gold-gradient {
+  background: linear-gradient(135deg, oklch(0.90 0.08 85), oklch(0.78 0.14 75), oklch(0.65 0.14 75));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility bg-grain {
+  background-image:
+    radial-gradient(at 20% 10%, oklch(0.15 0.02 50 / 0.2), transparent 50%),
+    radial-gradient(at 80% 80%, oklch(0.10 0.04 40 / 0.1), transparent 50%);
+}
+
+@utility display-title {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+@utility hairline {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
