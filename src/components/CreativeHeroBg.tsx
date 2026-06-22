@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
 import logoImg from "@/assets/logo.svg";
-import piece1 from "@/assets/piece-1.jpg";
-import piece2 from "@/assets/piece-2.jpg";
-import piece3 from "@/assets/piece-3.jpg";
+import piece1 from "@/assets/design-green.jpg";
+import piece2 from "@/assets/design-burgundy.jpg";
+import piece3 from "@/assets/design-yellow.jpg";
 
 export default function CreativeHeroBg() {
   const mountRef = useRef<HTMLDivElement>(null);

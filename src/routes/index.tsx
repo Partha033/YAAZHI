@@ -6,19 +6,23 @@ import CreativeHeroBg from "@/components/CreativeHeroBg";
 import sketchImg from "@/assets/process-sketch.jpg";
 import stitchImg from "@/assets/process-stitch.jpg";
 import finishImg from "@/assets/process-finish.jpg";
-import piece1 from "@/assets/piece-1.jpg";
-import piece2 from "@/assets/piece-2.jpg";
-import piece3 from "@/assets/piece-3.jpg";
-import g1 from "@/assets/g1.jpg";
-import g2 from "@/assets/g2.jpg";
-import g3 from "@/assets/g3.jpg";
-import g4 from "@/assets/g4.jpg";
-import g5 from "@/assets/g5.jpg";
-import g6 from "@/assets/g6.jpg";
-import g7 from "@/assets/g7.jpg";
-import g8 from "@/assets/g8.jpg";
-import g9 from "@/assets/g9.jpg";
+import piece1 from "@/assets/design-green.jpg";
+import piece2 from "@/assets/design-burgundy.jpg";
+import piece3 from "@/assets/design-yellow.jpg";
+import g1 from "@/assets/design-green.jpg";
+import g2 from "@/assets/design-burgundy.jpg";
+import g3 from "@/assets/design-blue-logo.png";
+import g4 from "@/assets/design-burgundy-diagonal.jpg";
+import g5 from "@/assets/design-grey-close.jpg";
+import g6 from "@/assets/design-yellow.jpg";
+import g7 from "@/assets/design-cream-navy.jpg";
+import g8 from "@/assets/design-blue-back.jpg";
+import g9 from "@/assets/design-beige-diagonal.png";
 import g10 from "@/assets/g10.jpg";
+import era2 from "@/assets/yazhi-era-2.png";
+import era3 from "@/assets/yazhi-era-3.png";
+import era4 from "@/assets/yazhi-era-4.png";
+import era5 from "@/assets/yazhi-era-5.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -40,15 +44,15 @@ export const Route = createFileRoute("/")({
 });
 
 const galleryImages = [
-  { src: g1, alt: "Olive and bone color-block sweatshirt" },
-  { src: g2, alt: "Navy and ember diagonal panel sweatshirt" },
-  { src: g3, alt: "Gold piping seam detail" },
-  { src: g4, alt: "Folded burgundy and cream piece with YAAZHI tag" },
-  { src: g5, alt: "Black sweatshirt with gold YAAZHI mark" },
+  { src: g1, alt: "Sage green and bone diagonal panel sweatshirt" },
+  { src: g2, alt: "Burgundy and cream split sweatshirt" },
+  { src: g3, alt: "Gold logo detail on blue and white sweatshirt" },
+  { src: g4, alt: "Black, burgundy and white diagonal panel sweatshirt" },
+  { src: g5, alt: "Grey and black split sweatshirt with gold YAAZHI mark" },
   { src: g6, alt: "Mustard, cream and charcoal panelled sweatshirt" },
-  { src: g7, alt: "Ribbed cuff detail in maroon and bone" },
-  { src: g8, alt: "Forest green and bone back view" },
-  { src: g9, alt: "Hanging burgundy piece with cream panel" },
+  { src: g7, alt: "White, navy and beige block sweatshirt" },
+  { src: g8, alt: "Blue and white back view" },
+  { src: g9, alt: "Black, beige and white diagonal panel sweatshirt" },
   { src: g10, alt: "Gold thread spool on dark fabric" },
 ];
 
@@ -87,7 +91,7 @@ function Index() {
       <CreativeHeroBg />
       <Nav />
       <Hero />
-      <Manifesto />
+      <YazhiLegend />
       <Process />
       <Featured />
       <Gallery />
@@ -178,19 +182,19 @@ function Hero() {
           <img
             src={logoImg}
             alt="YAAZHI logo"
-            className="h-32 w-32 md:h-64 md:w-64 object-contain drop-shadow-[0_0_40px_rgba(212,175,55,0.6)]"
+            className="h-32 w-32 md:h-80 md:w-80 object-contain drop-shadow-[0_0_40px_rgba(212,175,55,0.6)]"
           />
         </FadeIn>
 
         <FadeIn delay={300}>
-          <h1 className="display-title text-[20vw] sm:text-[15vw] leading-[0.9] md:text-[8rem] px-2">
+          <h1 className="display-title text-[14vw] sm:text-[12vw] leading-[0.9] md:text-[8rem] px-2">
             <span className="block text-bone">THE</span>
             <span className="block text-gold-gradient">ART</span>
           </h1>
         </FadeIn>
         
         <FadeIn delay={500} className="px-4">
-          <p className="mt-8 md:mt-12 max-w-xl font-serif text-xl sm:text-2xl italic text-bone/90 md:text-3xl leading-relaxed">
+          <p className="mt-6 md:mt-12 max-w-xl font-serif text-lg sm:text-xl italic text-bone/90 md:text-3xl leading-relaxed">
             What starts on paper, comes to life in fabric.
           </p>
           <p className="mx-auto mt-4 md:mt-6 max-w-lg text-xs sm:text-sm leading-relaxed text-foreground/50 font-light px-2">
@@ -241,41 +245,96 @@ function LogoBadge({ className = "" }: { className?: string }) {
   );
 }
 
-function Manifesto() {
+function YazhiLegend() {
+  const images = [ era2, era3, era4, era5];
+  const [imageIdx, setImageIdx] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setImageIdx((prev) => (prev + 1) % images.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <section id="story" className="relative overflow-hidden py-24 md:py-48">
+    <section id="story" className="relative overflow-hidden py-16 md:py-36 bg-grain">
       <LogoWatermark className="-right-10 top-10 h-[250px] w-[250px] md:-right-20 md:top-20 md:h-[500px] md:w-[500px]" />
-      <div className="mx-auto max-w-6xl px-6 md:px-10 relative z-10">
-        <div className="grid gap-12 md:gap-20 md:grid-cols-12 items-center">
-          <div className="md:col-span-5">
-            <FadeIn>
-              <div className="text-[9px] md:text-[10px] tracking-[0.5em] text-gold font-semibold">— OUR MANIFESTO</div>
-              <h2 className="display-title mt-6 md:mt-8 text-5xl md:text-8xl text-gold-gradient leading-[1.1]">
-                Made <br /> for You.
-              </h2>
+      <LogoWatermark className="-left-10 bottom-10 h-[250px] w-[250px] md:-left-20 md:bottom-20 md:h-[500px] md:w-[500px]" />
+      
+      <div className="mx-auto max-w-7xl px-6 md:px-10 relative z-10">
+        <div className="grid gap-10 md:gap-20 md:grid-cols-12 items-center">
+          
+          {/* Yazhi Visual Explanation (Left) */}
+          <div className="col-span-1 md:col-span-5 flex flex-col items-center gap-4">
+            <FadeIn className="relative w-full max-w-[380px] overflow-hidden p-1 border border-gold/15 bg-ink/30 backdrop-blur-xl rounded-sm shadow-2xl group w-full">
+              <div className="relative overflow-hidden aspect-[16/10] sm:aspect-[4/3] md:aspect-[3/4] w-full bg-black/40">
+                {images.map((img, idx) => (
+                  <img
+                    key={idx}
+                    src={img}
+                    alt={`Yazhi representation ${idx + 1}`}
+                    loading="lazy"
+                    className={`absolute inset-0 h-full w-full object-cover rounded-sm transition-all duration-[1200ms] ease-in-out
+                      ${idx === imageIdx 
+                        ? "opacity-95 scale-100 rotate-0" 
+                        : "opacity-0 scale-105 pointer-events-none"
+                      }`}
+                  />
+                ))}
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-transparent to-transparent opacity-45 pointer-events-none" />
+              </div>
+              <LogoBadge className="right-3 top-3 scale-75 opacity-70" />
             </FadeIn>
+
+            {/* Slideshow Dot Indicators */}
+            <div className="flex gap-2.5 mt-2">
+              {images.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setImageIdx(idx)}
+                  className={`w-1.5 h-1.5 rounded-full transition-all duration-300 focus:outline-none 
+                    ${idx === imageIdx 
+                      ? "bg-gold w-4 shadow-[0_0_8px_#d4b960]" 
+                      : "bg-gold/30 hover:bg-gold/60"
+                    }`}
+                  aria-label={`Go to Yazhi illustration ${idx + 1}`}
+                />
+              ))}
+            </div>
           </div>
-          <div className="md:col-span-7">
-            <FadeIn delay={200} className="border-l-2 border-gold/20 pl-6 md:pl-12">
-              <p className="font-serif text-2xl leading-[1.4] text-bone md:text-5xl">
-                We don't chase trends. We chase the line between a pencil mark and a
-                perfect stitch — the quiet moment where{" "}
-                <span className="text-gold italic">an idea becomes something you can wear</span>.
-              </p>
-              <div className="mt-8 md:mt-12 grid gap-6 md:gap-10 text-xs sm:text-sm leading-relaxed text-foreground/50 sm:grid-cols-2 font-light">
-                <p>
-                  Each YAAZHI piece begins on paper. A sketch, a swatch, a long
-                  argument about a single seam. Nothing leaves the table until it
-                  feels permanent.
+
+          {/* Text details explaining Yazhi (Right) */}
+          <div className="col-span-1 md:col-span-7">
+            <FadeIn delay={200} className="border-l-2 border-gold/20 pl-6 md:pl-12 space-y-6">
+              <div>
+                <div className="text-[8px] md:text-[9px] tracking-[0.4em] text-gold font-semibold uppercase">— THE LEGEND</div>
+                <h2 className="display-title mt-3 text-2xl sm:text-3xl md:text-5xl text-gold-gradient leading-tight">
+                  THE LEGEND OF YAZHI
+                </h2>
+                
+                {/* Explanatory description */}
+                <p className="font-serif text-base sm:text-lg md:text-2xl leading-relaxed text-bone mt-5 font-light italic">
+                  Yazhi is a mythical South Indian guardian beast. It represents the ultimate fusion of strength, wisdom, and heritage—combining the <span className="text-gold">power of a lion</span>, the <span className="text-gold">majesty of an elephant</span>, and the <span className="text-gold">agility of a horse</span> into a single immortal symbol.
                 </p>
-                <p>
-                  Then it goes to the machines — old, warm, careful — where
-                  fabric, gold thread and patience do the rest. The result is
-                  something you'll keep for a decade, not a season.
-                </p>
+              </div>
+
+              <div className="grid gap-6 text-[11px] sm:text-xs leading-relaxed text-foreground/50 sm:grid-cols-2 font-light pt-4 border-t border-gold/10">
+                <div>
+                  <div className="text-[8px] md:text-[9px] font-semibold tracking-[0.3em] text-gold mb-2 uppercase">THE TEMPLE GUARDIAN</div>
+                  <p>
+                    Flanking temple gates across the Tamil lands, Yazhi stood as the eternal protector of sacred wisdom—a stone declaration of fearlessness and heritage.
+                  </p>
+                </div>
+                <div>
+                  <div className="text-[8px] md:text-[9px] font-semibold tracking-[0.3em] text-gold mb-2 uppercase">OUR MODERN IDENTITY</div>
+                  <p>
+                    Today, we carry this legacy in YAAZHI. We don't chase trends; we build slow-crafted, unique garments stitched with that same timeless strength and intention.
+                  </p>
+                </div>
               </div>
             </FadeIn>
           </div>
+
         </div>
       </div>
     </section>
@@ -348,7 +407,7 @@ function Process() {
       <div className="mx-auto max-w-7xl px-6 md:px-10 relative z-10">
         <FadeIn className="flex flex-col items-center text-center gap-4 md:gap-6">
           <span className="text-[9px] md:text-[10px] tracking-[0.5em] text-gold font-semibold">— THE PROCESS</span>
-          <h2 className="display-title text-4xl sm:text-5xl md:text-7xl">
+          <h2 className="display-title text-2xl sm:text-3xl md:text-7xl">
             <span className="text-bone">FROM SKETCH </span>
             <span className="text-ember">TO FABRIC.</span>
           </h2>
@@ -382,7 +441,7 @@ function Process() {
         </div>
 
         <FadeIn delay={300}>
-          <p className="mx-auto mt-12 md:mt-20 max-w-2xl text-center font-serif text-xl sm:text-2xl md:text-4xl italic text-gold-soft leading-relaxed px-4">
+          <p className="mx-auto mt-12 md:mt-20 max-w-2xl text-center font-serif text-lg sm:text-xl md:text-4xl italic text-gold-soft leading-relaxed px-4">
             "What starts on paper, <br className="sm:hidden" />
             comes to life in fabric."
           </p>
@@ -396,9 +455,9 @@ function Featured() {
   const pieces = [
     {
       img: piece1,
-      name: "The Ember Diagonal",
-      meta: "Black + Rose Piping · No. 01",
-      copy: "A single diagonal stroke of ember, traced in gold thread.",
+      name: "Sage Diagonal",
+      meta: "Sage + Bone · No. 01",
+      copy: "A single diagonal stroke of sage green, meeting bone cream in a clean seam.",
     },
     {
       img: piece2,
@@ -408,9 +467,9 @@ function Featured() {
     },
     {
       img: piece3,
-      name: "Sunset Cream",
-      meta: "Vermillion + Bone · No. 03",
-      copy: "Cut for the hour the light goes warm.",
+      name: "Mustard Panel",
+      meta: "Charcoal + Mustard + Cream · No. 03",
+      copy: "A bold mustard yellow panel sandwiched between deep charcoal and bone white.",
     },
   ];
   return (
@@ -419,7 +478,7 @@ function Featured() {
       <div className="mx-auto max-w-7xl px-6 md:px-10 relative z-10">
         <FadeIn className="flex flex-col items-start gap-4 md:gap-6 border-l-2 border-gold pl-6 md:pl-8">
           <span className="text-[9px] md:text-[10px] tracking-[0.5em] text-gold font-semibold">— FEATURED PIECES</span>
-          <h2 className="display-title text-4xl sm:text-5xl md:text-7xl text-gold-gradient">The Lineage.</h2>
+          <h2 className="display-title text-2xl sm:text-3xl md:text-7xl text-gold-gradient">The Lineage.</h2>
           <p className="mt-2 md:mt-4 max-w-xl text-xs sm:text-sm text-foreground/50 font-light leading-relaxed">
             Three pieces from our current chapter. Each is photographed where it
             was made — under one warm light, against one long shadow.
@@ -446,8 +505,8 @@ function Featured() {
               <div className="md:col-span-5 md:px-10">
                 <FadeIn delay={200}>
                   <div className="text-[8px] md:text-[10px] tracking-[0.4em] text-gold-deep mb-4 md:mb-6 font-semibold">{p.meta}</div>
-                  <h3 className="display-title text-3xl sm:text-4xl md:text-6xl text-bone leading-tight">{p.name}</h3>
-                  <p className="mt-4 md:mt-8 font-serif text-xl md:text-2xl italic text-foreground/70 leading-relaxed">{p.copy}</p>
+                  <h3 className="display-title text-xl sm:text-2xl md:text-6xl text-bone leading-tight">{p.name}</h3>
+                  <p className="mt-4 md:mt-8 font-serif text-base sm:text-lg md:text-2xl italic text-foreground/70 leading-relaxed">{p.copy}</p>
                   <div className="mt-8 md:mt-12 flex items-center gap-4">
                     <span className="hairline w-12 md:w-16" />
                     <span className="text-[7px] md:text-[9px] tracking-[0.4em] font-semibold text-gold">CRAFTED IN-HOUSE</span>
@@ -469,7 +528,7 @@ function Gallery() {
       <div className="mx-auto max-w-7xl px-4 md:px-10 relative z-10">
         <FadeIn className="flex flex-col items-center text-center gap-4 md:gap-6">
           <span className="text-[9px] md:text-[10px] tracking-[0.5em] text-gold font-semibold">— THE ARCHIVE</span>
-          <h2 className="display-title text-4xl sm:text-5xl md:text-7xl text-bone">
+          <h2 className="display-title text-2xl sm:text-3xl md:text-7xl text-bone">
             Ten Pieces. <span className="text-ember block sm:inline">One Story.</span>
           </h2>
         </FadeIn>
@@ -512,11 +571,11 @@ function Contact() {
       <div className="relative mx-auto max-w-6xl px-6 md:px-10 z-10">
         <div className="grid gap-16 md:gap-20 md:grid-cols-2">
           <FadeIn>
-            <h2 className="display-title text-4xl sm:text-5xl md:text-7xl text-bone leading-[1.1]">
+            <h2 className="display-title text-2xl sm:text-3xl md:text-7xl text-bone leading-[1.1]">
               Tell us your <br />
               <span className="text-gold-deep">story.</span>
             </h2>
-            <p className="mt-6 md:mt-8 max-w-md font-serif text-lg sm:text-xl md:text-2xl italic text-foreground/50">
+            <p className="mt-6 md:mt-8 max-w-md font-serif text-base sm:text-lg md:text-2xl italic text-foreground/50">
               Commissions, collaborations, or just a kind word — we read every letter.
             </p>
             <div className="mt-12 md:mt-16 space-y-6 md:space-y-8 text-[11px] md:text-xs tracking-[0.2em] text-foreground/60">
