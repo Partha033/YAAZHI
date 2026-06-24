@@ -149,20 +149,30 @@ function Nav() {
             <a href="#contact" className="hover:text-gold transition-colors">CONTACT</a>
           </nav>
 
-          <button 
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden text-gold-soft p-2 z-50 relative focus:outline-none focus:ring-1 focus:ring-gold/30 rounded-sm"
-            aria-label="Toggle menu"
-            aria-expanded={menuOpen}
-          >
-            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {menuOpen ? (
-                <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={1.5} d="M4 7h16M4 12h16M4 17h16" />
-              )}
-            </svg>
-          </button>
+          <div className="flex items-center gap-4 md:hidden">
+            {!menuOpen && (
+              <a 
+                href="#shop" 
+                className="text-[9px] font-semibold tracking-[0.25em] text-gold border border-gold/25 px-3 py-1.5 rounded-sm bg-gold/5 hover:bg-gold/15 transition-all duration-300"
+              >
+                SHOP
+              </a>
+            )}
+            <button 
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="text-gold-soft p-2 z-50 relative focus:outline-none focus:ring-1 focus:ring-gold/30 rounded-sm"
+              aria-label="Toggle menu"
+              aria-expanded={menuOpen}
+            >
+              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {menuOpen ? (
+                  <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={1.5} d="M4 7h16M4 12h16M4 17h16" />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
       </header>
 
