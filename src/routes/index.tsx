@@ -668,7 +668,7 @@ function Featured() {
 }
 
 function Shop() {
-  const WHATSAPP_NUMBER = "918072124508"; // Studio WhatsApp number
+  const WHATSAPP_NUMBER = "916380354445"; // Studio WhatsApp number
 
   const products = [
     {
