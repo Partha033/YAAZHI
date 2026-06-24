@@ -6,6 +6,7 @@ import CreativeHeroBg from "@/components/CreativeHeroBg";
 import sketchImg from "@/assets/process-sketch.jpg";
 import stitchImg from "@/assets/process-stitch.jpg";
 import finishImg from "@/assets/process-finish.jpg";
+<<<<<<< HEAD
 const designImagesMap = import.meta.glob("@/assets/file_*.png", { eager: true, import: "default" });
 const designImages = Object.values(designImagesMap) as string[];
 
@@ -18,6 +19,11 @@ const set6 = designImages.slice(39, 47);
 const set7 = designImages.slice(47, 55);
 const set8 = designImages.slice(55, 63);
 const set9 = designImages.slice(63, 71);
+=======
+import piece1 from "@/assets/design-green.jpg";
+import piece2 from "@/assets/design-burgundy.jpg";
+import piece3 from "@/assets/design-yellow.jpg";
+>>>>>>> 1430aa488dd84c8247652d692fcab15b48a74606
 import g1 from "@/assets/design-green.jpg";
 import g2 from "@/assets/design-burgundy.jpg";
 import g3 from "@/assets/design-blue-logo.png";
@@ -103,7 +109,10 @@ function Index() {
       <YazhiLegend />
       <Process />
       <Featured />
+<<<<<<< HEAD
       <Shop />
+=======
+>>>>>>> 1430aa488dd84c8247652d692fcab15b48a74606
       <Gallery />
       <Contact />
       <Footer />
@@ -144,7 +153,10 @@ function Nav() {
             <a href="#story" className="hover:text-gold transition-colors">STORY</a>
             <a href="#process" className="hover:text-gold transition-colors">PROCESS</a>
             <a href="#works" className="hover:text-gold transition-colors">WORKS</a>
+<<<<<<< HEAD
             <a href="#shop" className="hover:text-gold transition-colors">SHOP</a>
+=======
+>>>>>>> 1430aa488dd84c8247652d692fcab15b48a74606
             <a href="#contact" className="hover:text-gold transition-colors">CONTACT</a>
           </nav>
 
@@ -173,7 +185,10 @@ function Nav() {
           <a href="#story" onClick={() => setMenuOpen(false)} className="hover:text-gold transition-colors px-6 py-3">STORY</a>
           <a href="#process" onClick={() => setMenuOpen(false)} className="hover:text-gold transition-colors px-6 py-3">PROCESS</a>
           <a href="#works" onClick={() => setMenuOpen(false)} className="hover:text-gold transition-colors px-6 py-3">WORKS</a>
+<<<<<<< HEAD
           <a href="#shop" onClick={() => setMenuOpen(false)} className="hover:text-gold transition-colors px-6 py-3">SHOP</a>
+=======
+>>>>>>> 1430aa488dd84c8247652d692fcab15b48a74606
           <a href="#contact" onClick={() => setMenuOpen(false)} className="hover:text-gold transition-colors px-6 py-3">CONTACT</a>
         </nav>
       </div>
@@ -463,6 +478,7 @@ function Process() {
   );
 }
 
+<<<<<<< HEAD
 function DesignImageArea({ images, name }: { images: string[]; name: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentIdx, setCurrentIdx] = useState(0);
@@ -620,6 +636,27 @@ function Featured() {
       name: "Design Edition IX",
       meta: "Obsidian Black · No. 09",
       copy: "The final chapter in this series, focused on fine details, ribbed cuffs, and precise stitching.",
+=======
+function Featured() {
+  const pieces = [
+    {
+      img: piece1,
+      name: "Sage Diagonal",
+      meta: "Sage + Bone · No. 01",
+      copy: "A single diagonal stroke of sage green, meeting bone cream in a clean seam.",
+    },
+    {
+      img: piece2,
+      name: "Maroon Split",
+      meta: "Burgundy + Sand · No. 02",
+      copy: "Two halves, one quiet seam down the middle.",
+    },
+    {
+      img: piece3,
+      name: "Mustard Panel",
+      meta: "Charcoal + Mustard + Cream · No. 03",
+      copy: "A bold mustard yellow panel sandwiched between deep charcoal and bone white.",
+>>>>>>> 1430aa488dd84c8247652d692fcab15b48a74606
     },
   ];
   return (
@@ -630,7 +667,11 @@ function Featured() {
           <span className="text-[9px] md:text-[10px] tracking-[0.5em] text-gold font-semibold">— FEATURED PIECES</span>
           <h2 className="display-title text-2xl sm:text-3xl md:text-7xl text-gold-gradient">The Lineage.</h2>
           <p className="mt-2 md:mt-4 max-w-xl text-xs sm:text-sm text-foreground/50 font-light leading-relaxed">
+<<<<<<< HEAD
             Nine design sets from our current chapter. Each is photographed where it
+=======
+            Three pieces from our current chapter. Each is photographed where it
+>>>>>>> 1430aa488dd84c8247652d692fcab15b48a74606
             was made — under one warm light, against one long shadow.
           </p>
         </FadeIn>
@@ -643,7 +684,16 @@ function Featured() {
             >
               <div className="md:col-span-7">
                 <FadeIn delay={100} className="relative overflow-hidden p-1.5 md:p-2 border border-gold/10 bg-ink/30 backdrop-blur-xl rounded-sm shadow-2xl">
+<<<<<<< HEAD
                   <DesignImageArea images={p.imgs} name={p.name} />
+=======
+                  <img
+                    src={p.img}
+                    alt={p.name}
+                    loading="lazy"
+                    className="h-[50vh] md:h-[80vh] w-full object-cover"
+                  />
+>>>>>>> 1430aa488dd84c8247652d692fcab15b48a74606
                   <LogoBadge className="right-4 top-4 md:right-6 md:top-6" />
                 </FadeIn>
               </div>
@@ -666,6 +716,7 @@ function Featured() {
   );
 }
 
+<<<<<<< HEAD
 function Shop() {
   const WHATSAPP_NUMBER = "918072124508"; // Studio WhatsApp number
 
@@ -852,6 +903,8 @@ function Shop() {
   );
 }
 
+=======
+>>>>>>> 1430aa488dd84c8247652d692fcab15b48a74606
 function Gallery() {
   return (
     <section className="relative overflow-hidden py-24 md:py-48 border-t border-gold/10">
