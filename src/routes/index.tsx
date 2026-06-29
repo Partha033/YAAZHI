@@ -19,10 +19,16 @@ import g7 from "@/assets/design-cream-navy.jpg";
 import g8 from "@/assets/design-blue-back.jpg";
 import g9 from "@/assets/design-beige-diagonal.png";
 import g10 from "@/assets/g10.jpg";
-import era2 from "@/assets/yazhi-era-2.png";
-import era3 from "@/assets/yazhi-era-3.png";
-import era4 from "@/assets/yazhi-era-4.png";
-import era5 from "@/assets/yazhi-era-5.png";
+
+import navamaniImg from "@/assets/VAIDUR.png";
+import neelLookbook from "@/assets/NEEL.png";
+import hessonLookbook from "@/assets/HESSON.png";
+import shapyrLookbook from "@/assets/SHAPYR.png";
+import diamoLookbook from "@/assets/DIAMO.png";
+import emeraLookbook from "@/assets/EMERA.png";
+import pearlLookbook from "@/assets/LUMERA.png";
+import coralLookbook from "@/assets/CORA.png";
+import rubyLookbook from "@/assets/RUBIS.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -246,89 +252,56 @@ function LogoBadge({ className = "" }: { className?: string }) {
 }
 
 function YazhiLegend() {
-  const images = [ era2, era3, era4, era5];
-  const [imageIdx, setImageIdx] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setImageIdx((prev) => (prev + 1) % images.length);
-    }, 4500);
-    return () => clearInterval(timer);
-  }, []);
-
   return (
-    <section id="story" className="relative overflow-hidden py-16 md:py-36 bg-grain">
+    <section id="story" className="relative overflow-hidden py-12 md:py-36 bg-grain">
       <LogoWatermark className="-right-10 top-10 h-[250px] w-[250px] md:-right-20 md:top-20 md:h-[500px] md:w-[500px]" />
       <LogoWatermark className="-left-10 bottom-10 h-[250px] w-[250px] md:-left-20 md:bottom-20 md:h-[500px] md:w-[500px]" />
       
-      <div className="mx-auto max-w-7xl px-6 md:px-10 relative z-10">
-        <div className="grid gap-10 md:gap-20 md:grid-cols-12 items-center">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-10 relative z-10">
+        <div className="grid gap-8 md:gap-20 md:grid-cols-12 items-center">
           
           {/* Yazhi Visual Explanation (Left) */}
           <div className="col-span-1 md:col-span-5 flex flex-col items-center gap-4">
-            <FadeIn className="relative w-full max-w-[380px] overflow-hidden p-1 border border-gold/15 bg-ink/30 backdrop-blur-xl rounded-sm shadow-2xl group w-full">
-              <div className="relative overflow-hidden aspect-[16/10] sm:aspect-[4/3] md:aspect-[3/4] w-full bg-black/40">
-                {images.map((img, idx) => (
-                  <img
-                    key={idx}
-                    src={img}
-                    alt={`Yazhi representation ${idx + 1}`}
-                    loading="lazy"
-                    className={`absolute inset-0 h-full w-full object-cover rounded-sm transition-all duration-[1200ms] ease-in-out
-                      ${idx === imageIdx 
-                        ? "opacity-95 scale-100 rotate-0" 
-                        : "opacity-0 scale-105 pointer-events-none"
-                      }`}
-                  />
-                ))}
+            <FadeIn className="relative w-full max-w-[380px] overflow-hidden p-1 border border-gold/15 bg-ink/30 backdrop-blur-xl rounded-sm shadow-2xl group mx-auto">
+              <div className="relative overflow-hidden aspect-[4/5] md:aspect-[3/4] w-full bg-black/40">
+                <img
+                  src={heroImg}
+                  alt="YAAZHI Craftsmanship"
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover rounded-sm transition-transform duration-1000 group-hover:scale-105"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-transparent to-transparent opacity-45 pointer-events-none" />
               </div>
               <LogoBadge className="right-3 top-3 scale-75 opacity-70" />
             </FadeIn>
-
-            {/* Slideshow Dot Indicators */}
-            <div className="flex gap-2.5 mt-2">
-              {images.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setImageIdx(idx)}
-                  className={`w-1.5 h-1.5 rounded-full transition-all duration-300 focus:outline-none 
-                    ${idx === imageIdx 
-                      ? "bg-gold w-4 shadow-[0_0_8px_#d4b960]" 
-                      : "bg-gold/30 hover:bg-gold/60"
-                    }`}
-                  aria-label={`Go to Yazhi illustration ${idx + 1}`}
-                />
-              ))}
-            </div>
           </div>
 
           {/* Text details explaining Yazhi (Right) */}
           <div className="col-span-1 md:col-span-7">
-            <FadeIn delay={200} className="border-l-2 border-gold/20 pl-6 md:pl-12 space-y-6">
+            <FadeIn delay={200} className="border-l-2 border-gold/20 pl-4 sm:pl-6 md:pl-12 space-y-4 md:space-y-6">
               <div>
-                <div className="text-[8px] md:text-[9px] tracking-[0.4em] text-gold font-semibold uppercase">— THE LEGEND</div>
-                <h2 className="display-title mt-3 text-2xl sm:text-3xl md:text-5xl text-gold-gradient leading-tight">
-                  THE LEGEND OF YAZHI
+                <div className="text-[7px] md:text-[9px] tracking-[0.4em] text-gold font-semibold uppercase">— THE LEGEND</div>
+                <h2 className="display-title mt-2 md:mt-3 text-xl sm:text-3xl md:text-5xl text-gold-gradient leading-tight">
+                  WHAT IS YAAZHI?
                 </h2>
                 
                 {/* Explanatory description */}
-                <p className="font-serif text-base sm:text-lg md:text-2xl leading-relaxed text-bone mt-5 font-light italic">
-                  Yazhi is a mythical South Indian guardian beast. It represents the ultimate fusion of strength, wisdom, and heritage—combining the <span className="text-gold">power of a lion</span>, the <span className="text-gold">majesty of an elephant</span>, and the <span className="text-gold">agility of a horse</span> into a single immortal symbol.
+                <p className="font-serif text-sm sm:text-lg md:text-2xl leading-relaxed text-bone mt-3 md:mt-5 font-light italic">
+                  Yazhi is a mythical guardian from South India. It is a powerful symbol that combines the <span className="text-gold">strength of a lion</span>, the <span className="text-gold">wisdom of an elephant</span>, and the <span className="text-gold">speed of a horse</span>.
                 </p>
               </div>
 
-              <div className="grid gap-6 text-[11px] sm:text-xs leading-relaxed text-foreground/50 sm:grid-cols-2 font-light pt-4 border-t border-gold/10">
+              <div className="grid gap-4 md:gap-6 text-[10px] sm:text-xs leading-relaxed text-foreground/50 sm:grid-cols-2 font-light pt-3 md:pt-4 border-t border-gold/10">
                 <div>
-                  <div className="text-[8px] md:text-[9px] font-semibold tracking-[0.3em] text-gold mb-2 uppercase">THE TEMPLE GUARDIAN</div>
+                  <div className="text-[7px] md:text-[9px] font-semibold tracking-[0.3em] text-gold mb-1 md:mb-2 uppercase">THE TEMPLE GUARDIAN</div>
                   <p>
-                    Flanking temple gates across the Tamil lands, Yazhi stood as the eternal protector of sacred wisdom—a stone declaration of fearlessness and heritage.
+                    Found carved into ancient temple pillars, the Yazhi stands as a fearless protector of sacred wisdom and heritage.
                   </p>
                 </div>
                 <div>
-                  <div className="text-[8px] md:text-[9px] font-semibold tracking-[0.3em] text-gold mb-2 uppercase">OUR MODERN IDENTITY</div>
+                  <div className="text-[7px] md:text-[9px] font-semibold tracking-[0.3em] text-gold mb-1 md:mb-2 uppercase">OUR MODERN IDENTITY</div>
                   <p>
-                    Today, we carry this legacy in YAAZHI. We don't chase trends; we build slow-crafted, unique garments stitched with that same timeless strength and intention.
+                    We carry this fearless spirit in our clothing. At YAAZHI, we create unique, crafted garments built with strength and intention.
                   </p>
                 </div>
               </div>
@@ -452,70 +425,189 @@ function Process() {
 }
 
 function Featured() {
-  const pieces = [
+  const [activeGem, setActiveGem] = useState<number | null>(null);
+
+  const stories = [
     {
-      img: piece1,
-      name: "Sage Diagonal",
-      meta: "Sage + Bone · No. 01",
-      copy: "A single diagonal stroke of sage green, meeting bone cream in a clean seam.",
+      n: "01",
+      name: "VAIDUR",
+      gem: "Vaiduriyam (Cat's Eye)",
+      tagline: "Awareness · Instinct · Focus",
+      copy: "The guardian never seeks attention. He watches, adapts, and moves with precision. Vaidur represents awareness, instinct, and unwavering focus. Every decision is deliberate, every step calculated.",
+      glow: "hover:shadow-[0_0_30px_rgba(156,163,175,0.25)] hover:border-gray-500/40",
+      textGlow: "group-hover:text-gray-300",
+      badgeBg: "bg-gray-500/10 text-gray-400 border-gray-500/20",
+      img: navamaniImg,
     },
     {
-      img: piece2,
-      name: "Maroon Split",
-      meta: "Burgundy + Sand · No. 02",
-      copy: "Two halves, one quiet seam down the middle.",
+      n: "02",
+      name: "NEEL",
+      gem: "Neelam (Blue Sapphire)",
+      tagline: "Clarity · Discipline · Confidence",
+      copy: "True strength is calm. Neel represents clarity, discipline, and confidence. It is made for those who remain composed while others lose direction.",
+      glow: "hover:shadow-[0_0_30px_rgba(59,130,246,0.25)] hover:border-blue-500/40",
+      textGlow: "group-hover:text-blue-300",
+      badgeBg: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+      img: neelLookbook,
     },
     {
-      img: piece3,
-      name: "Mustard Panel",
-      meta: "Charcoal + Mustard + Cream · No. 03",
-      copy: "A bold mustard yellow panel sandwiched between deep charcoal and bone white.",
+      n: "03",
+      name: "HESSON",
+      gem: "Gomedhagam (Hessonite)",
+      tagline: "Endurance · Evolution · Resilience",
+      copy: "Growth begins with resilience. Hesson represents endurance, transformation, and the courage to evolve through every challenge.",
+      glow: "hover:shadow-[0_0_30px_rgba(249,115,22,0.25)] hover:border-orange-500/40",
+      textGlow: "group-hover:text-orange-300",
+      badgeBg: "bg-orange-500/10 text-orange-400 border-orange-500/20",
+      img: hessonLookbook,
+    },
+    {
+      n: "04",
+      name: "SHAPYR",
+      gem: "Pushparagam (Yellow Sapphire)",
+      tagline: "Ambition · Prosperity · Excellence",
+      copy: "Success belongs to those who keep moving forward. Shapyr represents ambition, prosperity, and the pursuit of excellence.",
+      glow: "hover:shadow-[0_0_30px_rgba(234,179,8,0.25)] hover:border-yellow-500/40",
+      textGlow: "group-hover:text-yellow-300",
+      badgeBg: "bg-yellow-500/10 text-yellow-400 border-yellow-500/20",
+      img: shapyrLookbook,
+    },
+    {
+      n: "05",
+      name: "DIAMO",
+      gem: "Diamond (Vairam)",
+      tagline: "Strength · Rarity · Brilliance",
+      copy: "Pressure creates brilliance. Diamo represents strength, rarity, and the beauty that comes from enduring the hardest moments.",
+      glow: "hover:shadow-[0_0_30px_rgba(255,255,255,0.25)] hover:border-white/40",
+      textGlow: "group-hover:text-white",
+      badgeBg: "bg-white/10 text-white/80 border-white/20",
+      img: diamoLookbook,
+    },
+    {
+      n: "06",
+      name: "EMERA",
+      gem: "Maragatham (Emerald)",
+      tagline: "Growth · Harmony · Prosperity",
+      copy: "Harmony is the key to longevity. Emera represents balance, wisdom, and a deep connection to your roots. It is designed for those who grow while staying grounded.",
+      glow: "hover:shadow-[0_0_30px_rgba(16,185,129,0.25)] hover:border-emerald-500/40",
+      textGlow: "group-hover:text-emerald-300",
+      badgeBg: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+      img: emeraLookbook,
+    },
+    {
+      n: "07",
+      name: "PEARL",
+      gem: "Muthu (Pearl)",
+      tagline: "Purity · Patience · Simplicity",
+      copy: "Purity is the ultimate sophistication. Pearl represents clarity, patience, and a refined sense of simplicity.",
+      glow: "hover:shadow-[0_0_30px_rgba(243,244,246,0.25)] hover:border-gray-200/40",
+      textGlow: "group-hover:text-gray-100",
+      badgeBg: "bg-gray-100/10 text-gray-300 border-gray-100/20",
+      img: pearlLookbook,
+    },
+    {
+      n: "08",
+      name: "CORAL",
+      gem: "Pavalam (Coral)",
+      tagline: "Passion · Energy · Courage",
+      copy: "Passion drives action. Coral represents energy, warmth, and the courage to stand out. It is crafted for those who leave an impression.",
+      glow: "hover:shadow-[0_0_30px_rgba(239,68,68,0.25)] hover:border-red-500/40",
+      textGlow: "group-hover:text-red-300",
+      badgeBg: "bg-red-500/10 text-red-400 border-red-500/20",
+      img: coralLookbook,
+    },
+    {
+      n: "09",
+      name: "RUBY",
+      gem: "Manikkam (Ruby)",
+      tagline: "Leadership · Royalty · Purpose",
+      copy: "Leadership is defined by heart. Ruby represents passion, royalty, and the power to inspire others. It is made for those who lead with purpose and grace.",
+      glow: "hover:shadow-[0_0_30px_rgba(220,38,38,0.3)] hover:border-red-600/40",
+      textGlow: "group-hover:text-red-400",
+      badgeBg: "bg-red-600/10 text-red-400 border-red-600/20",
+      img: rubyLookbook,
     },
   ];
+
   return (
-    <section id="works" className="relative overflow-hidden py-24 md:py-48">
+    <section id="works" className="relative overflow-hidden py-24 md:py-48 bg-grain/50 border-t border-gold/10">
       <LogoWatermark className="-left-20 top-20 h-[300px] w-[300px] md:-left-40 md:top-60 md:h-[600px] md:w-[600px]" />
+      <LogoWatermark className="-right-20 bottom-20 h-[300px] w-[300px] md:-right-40 md:bottom-60 md:h-[600px] md:w-[600px]" />
       <div className="mx-auto max-w-7xl px-6 md:px-10 relative z-10">
-        <FadeIn className="flex flex-col items-start gap-4 md:gap-6 border-l-2 border-gold pl-6 md:pl-8">
-          <span className="text-[9px] md:text-[10px] tracking-[0.5em] text-gold font-semibold">— FEATURED PIECES</span>
-          <h2 className="display-title text-2xl sm:text-3xl md:text-7xl text-gold-gradient">The Lineage.</h2>
-          <p className="mt-2 md:mt-4 max-w-xl text-xs sm:text-sm text-foreground/50 font-light leading-relaxed">
-            Three pieces from our current chapter. Each is photographed where it
-            was made — under one warm light, against one long shadow.
+        
+        {/* Intro Header & Banner */}
+        <FadeIn className="flex flex-col items-center text-center gap-4 mb-20 md:mb-28">
+          <span className="text-[9px] md:text-[10px] tracking-[0.5em] text-gold font-semibold uppercase">
+            — THE NAVAMANI CHRONICLES
+          </span>
+          <h2 className="display-title text-3xl sm:text-4xl md:text-7xl text-gold-gradient leading-tight">
+            THE CHRONICLES.
+          </h2>
+          <p className="max-w-2xl text-xs sm:text-sm text-foreground/50 font-light leading-relaxed">
+            Nine sacred gems. Nine unique cuts. Inspired by ancient South Indian heritage, each piece in this upcoming capsule represents a timeless character story.
           </p>
         </FadeIn>
 
-        <div className="mt-20 md:mt-32 space-y-24 md:space-y-40">
-          {pieces.map((p, i) => (
-            <article
-              key={p.name}
-              className={`grid items-center gap-8 md:gap-16 md:grid-cols-12 ${i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""}`}
-            >
-              <div className="md:col-span-7">
-                <FadeIn delay={100} className="relative overflow-hidden p-1.5 md:p-2 border border-gold/10 bg-ink/30 backdrop-blur-xl rounded-sm shadow-2xl">
-                  <img
-                    src={p.img}
-                    alt={p.name}
-                    loading="lazy"
-                    className="h-[50vh] md:h-[80vh] w-full object-cover"
-                  />
-                  <LogoBadge className="right-4 top-4 md:right-6 md:top-6" />
-                </FadeIn>
+        {/* The 9 Featured Blocks */}
+        <div className="flex flex-col gap-24 md:gap-40">
+          {stories.map((s, idx) => {
+            const isEven = idx % 2 === 0;
+            const primaryColorClass = s.badgeBg.split(' ')[0].replace('bg-', '').replace('/10', '');
+            
+            return (
+              <div key={s.name} className="grid gap-12 lg:grid-cols-12 items-center">
+                
+                {/* Image Side */}
+                <div className={`lg:col-span-6 ${isEven ? 'order-2 lg:order-1' : 'order-2'}`}>
+                  <FadeIn className={`relative overflow-hidden p-1.5 md:p-2 border border-${primaryColorClass}/20 bg-ink/30 backdrop-blur-xl rounded-sm shadow-2xl group w-full max-w-lg mx-auto lg:max-w-none`}>
+                    <div className="relative overflow-hidden aspect-[4/5] lg:aspect-[1/1] w-full bg-black/40">
+                      <img
+                        src={s.img}
+                        alt={`The Navamani Chronicles: ${s.name}`}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-transparent to-transparent opacity-60 pointer-events-none" />
+                    </div>
+                    <LogoBadge className="right-4 top-4 md:right-6 md:top-6" />
+                  </FadeIn>
+                </div>
+                
+                {/* Text Side */}
+                <div className={`lg:col-span-6 ${isEven ? 'lg:pl-10 order-1 lg:order-2' : 'lg:pr-10 order-1'}`}>
+                  <FadeIn className={`flex flex-col items-start gap-4 md:gap-6 border-l-2 border-${primaryColorClass} pl-6 md:pl-8`}>
+                    <span className={`text-[8px] md:text-[9px] tracking-[0.4em] text-${primaryColorClass} font-semibold uppercase`}>
+                      FEATURED CHRONICLE · {s.n}
+                    </span>
+                    
+                    <h3 className="display-title text-3xl sm:text-4xl md:text-5xl text-bone leading-tight">
+                      {s.name}.<br />
+                      {s.gem.includes(" (") ? s.gem.split(' (')[0].toUpperCase() : s.gem.toUpperCase()}.
+                    </h3>
+                    
+                    <div className={`inline-flex items-center gap-2.5 rounded-full border border-${primaryColorClass}/30 bg-${primaryColorClass}/10 px-4 py-1.5 backdrop-blur-md shadow-lg animate-pulse`}>
+                      <span className={`h-1.5 w-1.5 rounded-full bg-${primaryColorClass}`} />
+                      <span className={`text-[8px] md:text-[9px] tracking-[0.4em] font-bold text-${primaryColorClass} uppercase`}>LAUNCHING SOON</span>
+                    </div>
+                    
+                    <p className="mt-2 md:mt-4 max-w-xl text-xs sm:text-sm text-foreground/60 font-light leading-relaxed">
+                      {s.copy}
+                    </p>
+                    
+                    <div className="mt-4 flex items-center gap-4">
+                      <span className={`hairline w-12 md:w-16 bg-${primaryColorClass}/50`} />
+                      <span className={`text-[8px] md:text-[9px] tracking-[0.4em] font-semibold text-${primaryColorClass} uppercase`}>
+                        {s.tagline.replace(/ · /g, ' + ')}
+                      </span>
+                    </div>
+                  </FadeIn>
+                </div>
+
               </div>
-              <div className="md:col-span-5 md:px-10">
-                <FadeIn delay={200}>
-                  <div className="text-[8px] md:text-[10px] tracking-[0.4em] text-gold-deep mb-4 md:mb-6 font-semibold">{p.meta}</div>
-                  <h3 className="display-title text-xl sm:text-2xl md:text-6xl text-bone leading-tight">{p.name}</h3>
-                  <p className="mt-4 md:mt-8 font-serif text-base sm:text-lg md:text-2xl italic text-foreground/70 leading-relaxed">{p.copy}</p>
-                  <div className="mt-8 md:mt-12 flex items-center gap-4">
-                    <span className="hairline w-12 md:w-16" />
-                    <span className="text-[7px] md:text-[9px] tracking-[0.4em] font-semibold text-gold">CRAFTED IN-HOUSE</span>
-                  </div>
-                </FadeIn>
-              </div>
-            </article>
-          ))}
+            );
+          })}
         </div>
+
       </div>
     </section>
   );
