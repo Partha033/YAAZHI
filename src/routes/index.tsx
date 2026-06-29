@@ -808,8 +808,7 @@ function Featured() {
                 </FadeIn>
               </div>
             </article>
-            );
-          })}
+          ))}
         </div>
 
       </div>
