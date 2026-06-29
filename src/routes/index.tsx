@@ -6,9 +6,6 @@ import CreativeHeroBg from "@/components/CreativeHeroBg";
 import sketchImg from "@/assets/process-sketch.jpg";
 import stitchImg from "@/assets/process-stitch.jpg";
 import finishImg from "@/assets/process-finish.jpg";
-import piece1 from "@/assets/design-green.jpg";
-import piece2 from "@/assets/design-burgundy.jpg";
-import piece3 from "@/assets/design-yellow.jpg";
 import g1 from "@/assets/design-green.jpg";
 import g2 from "@/assets/design-burgundy.jpg";
 import g3 from "@/assets/design-blue-logo.png";
@@ -29,6 +26,19 @@ import emeraLookbook from "@/assets/EMERA.png";
 import pearlLookbook from "@/assets/LUMERA.png";
 import coralLookbook from "@/assets/CORA.png";
 import rubyLookbook from "@/assets/RUBIS.png";
+
+const designImagesMap = import.meta.glob("@/assets/file_*.png", { eager: true, import: "default" });
+const designImages = Object.values(designImagesMap) as string[];
+
+const set1 = designImages.slice(0, 7);
+const set2 = designImages.slice(7, 15);
+const set3 = designImages.slice(15, 23);
+const set4 = designImages.slice(23, 31);
+const set5 = designImages.slice(31, 39);
+const set6 = designImages.slice(39, 47);
+const set7 = designImages.slice(47, 55);
+const set8 = designImages.slice(55, 63);
+const set9 = designImages.slice(63, 71);
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -100,6 +110,7 @@ function Index() {
       <YazhiLegend />
       <Process />
       <Featured />
+      <Shop />
       <Gallery />
       <Contact />
       <Footer />
@@ -140,23 +151,34 @@ function Nav() {
             <a href="#story" className="hover:text-gold transition-colors">STORY</a>
             <a href="#process" className="hover:text-gold transition-colors">PROCESS</a>
             <a href="#works" className="hover:text-gold transition-colors">WORKS</a>
+            <a href="#shop" className="hover:text-gold transition-colors">SHOP</a>
             <a href="#contact" className="hover:text-gold transition-colors">CONTACT</a>
           </nav>
 
-          <button 
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden text-gold-soft p-2 z-50 relative focus:outline-none focus:ring-1 focus:ring-gold/30 rounded-sm"
-            aria-label="Toggle menu"
-            aria-expanded={menuOpen}
-          >
-            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {menuOpen ? (
-                <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={1.5} d="M4 7h16M4 12h16M4 17h16" />
-              )}
-            </svg>
-          </button>
+          <div className="flex items-center gap-4 md:hidden">
+            {!menuOpen && (
+              <a 
+                href="#shop" 
+                className="text-[9px] font-semibold tracking-[0.25em] text-gold border border-gold/25 px-3 py-1.5 rounded-sm bg-gold/5 hover:bg-gold/15 transition-all duration-300"
+              >
+                SHOP
+              </a>
+            )}
+            <button 
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="text-gold-soft p-2 z-50 relative focus:outline-none focus:ring-1 focus:ring-gold/30 rounded-sm"
+              aria-label="Toggle menu"
+              aria-expanded={menuOpen}
+            >
+              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {menuOpen ? (
+                  <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={1.5} d="M4 7h16M4 12h16M4 17h16" />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
       </header>
 
@@ -168,6 +190,7 @@ function Nav() {
           <a href="#story" onClick={() => setMenuOpen(false)} className="hover:text-gold transition-colors px-6 py-3">STORY</a>
           <a href="#process" onClick={() => setMenuOpen(false)} className="hover:text-gold transition-colors px-6 py-3">PROCESS</a>
           <a href="#works" onClick={() => setMenuOpen(false)} className="hover:text-gold transition-colors px-6 py-3">WORKS</a>
+          <a href="#shop" onClick={() => setMenuOpen(false)} className="hover:text-gold transition-colors px-6 py-3">SHOP</a>
           <a href="#contact" onClick={() => setMenuOpen(false)} className="hover:text-gold transition-colors px-6 py-3">CONTACT</a>
         </nav>
       </div>
@@ -424,6 +447,108 @@ function Process() {
   );
 }
 
+function DesignImageArea({ images, name }: { images: string[]; name: string }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [currentIdx, setCurrentIdx] = useState(0);
+  const isScrollingRef = useRef(false);
+
+  const handleScroll = () => {
+    if (!containerRef.current || isScrollingRef.current) return;
+    const { scrollLeft, clientWidth } = containerRef.current;
+    if (clientWidth === 0) return;
+    const idx = Math.round(scrollLeft / clientWidth);
+    setCurrentIdx(idx);
+  };
+
+  const scrollToIdx = (idx: number) => {
+    if (!containerRef.current) return;
+    const { clientWidth } = containerRef.current;
+    isScrollingRef.current = true;
+    setCurrentIdx(idx);
+    containerRef.current.scrollTo({
+      left: idx * clientWidth,
+      behavior: "smooth",
+    });
+    
+    // Release scroll lock after animation completes
+    setTimeout(() => {
+      isScrollingRef.current = false;
+    }, 500);
+  };
+
+  return (
+    <div className="relative group w-full h-[50vh] md:h-[80vh] bg-black/40 flex flex-col justify-between overflow-hidden">
+      <style dangerouslySetInnerHTML={{ __html: `
+        .scrollbar-none::-webkit-scrollbar {
+          display: none;
+        }
+      `}} />
+      
+      {/* Scrollable container */}
+      <div
+        ref={containerRef}
+        onScroll={handleScroll}
+        className="w-full h-full flex overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-none"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none", WebkitOverflowScrolling: "touch" }}
+      >
+        {images.map((img, idx) => (
+          <div
+            key={img}
+            className="w-full h-full flex-shrink-0 snap-start snap-always relative"
+          >
+            <img
+              src={img}
+              alt={`${name} view ${idx + 1}`}
+              loading="lazy"
+              className="w-full h-full object-cover rounded-sm"
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Slide indicators (dots) */}
+      {images.length > 1 && (
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-2.5 bg-black/30 backdrop-blur-md px-3 py-2 rounded-full border border-gold/10 shadow-lg">
+          {images.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => scrollToIdx(idx)}
+              className={`w-1.5 h-1.5 rounded-full transition-all duration-300 focus:outline-none 
+                ${idx === currentIdx 
+                  ? "bg-gold w-4 shadow-[0_0_8px_#d4b960]" 
+                  : "bg-gold/30 hover:bg-gold/60"
+                }`}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
+          ))}
+        </div>
+      )}
+      
+      {/* Left/Right scroll overlay buttons (Desktop only) */}
+      {images.length > 1 && (
+        <>
+          <button
+            onClick={() => scrollToIdx(Math.max(0, currentIdx - 1))}
+            disabled={currentIdx === 0}
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-8 h-8 flex items-center justify-center rounded-full border border-gold/20 bg-ink/75 hover:bg-gold/10 text-gold-soft hover:text-gold transition-all duration-300 disabled:opacity-0 opacity-0 group-hover:opacity-100 cursor-pointer hidden md:flex"
+            aria-label="Previous slide"
+          >
+            ←
+          </button>
+          <button
+            onClick={() => scrollToIdx(Math.min(images.length - 1, currentIdx + 1))}
+            disabled={currentIdx === images.length - 1}
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-8 h-8 flex items-center justify-center rounded-full border border-gold/20 bg-ink/75 hover:bg-gold/10 text-gold-soft hover:text-gold transition-all duration-300 disabled:opacity-0 opacity-0 group-hover:opacity-100 cursor-pointer hidden md:flex"
+            aria-label="Next slide"
+          >
+            →
+          </button>
+        </>
+      )}
+    </div>
+  );
+}
+
 function Featured() {
   const [activeGem, setActiveGem] = useState<number | null>(null);
 
@@ -608,6 +733,379 @@ function Featured() {
           })}
         </div>
 
+      </div>
+    </section>
+  );
+}
+
+function Shop() {
+  const WHATSAPP_NUMBER = "916380354445"; // Studio WhatsApp number
+
+  const products = [
+    {
+      id: 1,
+      name: "Design Edition I",
+      meta: "Sage + Bone",
+      price: "₹2,499",
+      originalPrice: "₹2,999",
+      discount: "17% OFF",
+      img: set1[0],
+      description: "Sage green and bone cream diagonal split panel sweatshirt.",
+    },
+    {
+      id: 2,
+      name: "Design Edition II",
+      meta: "Burgundy + Sand",
+      price: "₹2,499",
+      originalPrice: "₹2,999",
+      discount: "17% OFF",
+      img: set2[0],
+      description: "Burgundy and cream split sweatshirt with gold piping.",
+    },
+    {
+      id: 3,
+      name: "Design Edition III",
+      meta: "Charcoal + Mustard",
+      price: "₹2,699",
+      originalPrice: "₹3,299",
+      discount: "18% OFF",
+      img: set3[0],
+      description: "Mustard yellow panel sandwiched between deep charcoal and bone white.",
+    },
+    {
+      id: 4,
+      name: "Design Edition IV",
+      meta: "Ember + Charcoal",
+      price: "₹2,599",
+      originalPrice: "₹3,099",
+      discount: "16% OFF",
+      img: set4[0],
+      description: "Deep charcoal sweatshirt split by warm ember piping.",
+    },
+    {
+      id: 5,
+      name: "Design Edition V",
+      meta: "Stone Grey",
+      price: "₹2,399",
+      originalPrice: "₹2,899",
+      discount: "17% OFF",
+      img: set5[0],
+      description: "Grey and black split sweatshirt with gold YAAZHI mark.",
+    },
+    {
+      id: 6,
+      name: "Design Edition VI",
+      meta: "Deep Crimson",
+      price: "₹2,699",
+      originalPrice: "₹3,299",
+      discount: "18% OFF",
+      img: set6[0],
+      description: "Deep crimson panels finished slowly with dual-tone ribbing.",
+    },
+  ];
+
+  const [selectedSizes, setSelectedSizes] = useState<Record<number, string>>({
+    1: "M", 2: "M", 3: "M", 4: "M", 5: "M", 6: "M"
+  });
+
+  const handleSizeChange = (productId: number, size: string) => {
+    setSelectedSizes(prev => ({ ...prev, [productId]: size }));
+  };
+
+  const handleBuy = (product: typeof products[0]) => {
+    const size = selectedSizes[product.id];
+    const imageUrl = typeof window !== "undefined"
+      ? window.location.origin + product.img
+      : product.img;
+
+    const message = `Hi YAAZHI, I would like to order:
+- Product: ${product.name} (${product.meta})
+- Original Price: ${product.originalPrice}
+- Discounted Price: ${product.price} (${product.discount})
+- Size: ${size}
+- Image: ${imageUrl}`;
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+    window.open(whatsappUrl, "_blank");
+  };
+
+  return (
+    <section id="shop" className="relative overflow-hidden py-24 md:py-36 bg-grain border-t border-gold/10">
+      <LogoWatermark className="-right-10 bottom-10 h-[250px] w-[250px] md:h-[500px] md:w-[500px] opacity-[0.02]" />
+      
+      <div className="mx-auto max-w-7xl px-6 md:px-10 relative z-10">
+        <FadeIn className="flex flex-col items-center text-center gap-4 md:gap-6 mb-16 md:mb-24">
+          <span className="text-[9px] md:text-[10px] tracking-[0.5em] text-gold font-semibold">— THE ACQUISITIONS</span>
+          <h2 className="display-title text-2xl sm:text-3xl md:text-7xl text-bone">
+            AVAILABLE <span className="text-gold-gradient">EDITIONS</span>
+          </h2>
+          <p className="max-w-xl text-xs sm:text-sm text-foreground/50 font-light leading-relaxed">
+            Slow-crafted garments, tailored to order. Direct communication via WhatsApp ensures sizing alignment and a tailored fit.
+          </p>
+        </FadeIn>
+
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {products.map((p, idx) => (
+            <FadeIn key={p.id} delay={(idx % 3) * 150} className="flex">
+              <div className="group flex flex-col justify-between w-full border border-gold/10 bg-ink/40 rounded-xl overflow-hidden backdrop-blur-md transition-all duration-500 hover:border-gold/30 hover:shadow-[0_0_30px_rgba(212,175,55,0.05)]">
+                {/* Image area */}
+                <div className="relative aspect-[3/4] overflow-hidden bg-black/20">
+                  <img
+                    src={p.img}
+                    alt={p.name}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent opacity-60" />
+                  {/* Floating Discount Badge */}
+                  <div className="absolute top-4 right-4 bg-ember/90 border border-ember/20 px-2.5 py-1 text-[9px] tracking-wider font-bold text-bone rounded-md backdrop-blur-sm shadow-md uppercase">
+                    {p.discount}
+                  </div>
+                </div>
+
+                {/* Content details */}
+                <div className="p-6 md:p-8 flex flex-col justify-between flex-grow gap-6">
+                  <div className="space-y-3">
+                    <div>
+                      <div className="text-[8px] md:text-[9px] tracking-[0.3em] text-gold-deep font-semibold uppercase">{p.meta}</div>
+                      <h3 className="display-title text-lg md:text-xl text-bone mt-1">{p.name}</h3>
+                      {/* Price Section */}
+                      <div className="flex items-baseline gap-2.5 mt-2">
+                        <span className="text-xl font-bold text-gold">{p.price}</span>
+                        <span className="text-sm text-foreground/45 line-through">{p.originalPrice}</span>
+                      </div>
+                    </div>
+                    <p className="text-[12px] md:text-[13px] leading-relaxed text-foreground/50 font-light">
+                      {p.description}
+                    </p>
+                  </div>
+
+                  <div className="space-y-4">
+                    {/* Size Selector */}
+                    <div className="flex items-center justify-between border-t border-gold/5 pt-4">
+                      <span className="text-[9px] tracking-[0.2em] font-semibold text-gold-soft">SIZE</span>
+                      <div className="flex gap-1.5">
+                        {["S", "M", "L", "XL", "XXL"].map(size => (
+                          <button
+                            key={size}
+                            onClick={() => handleSizeChange(p.id, size)}
+                            className={`w-7 h-7 flex items-center justify-center text-[10px] font-semibold border rounded transition-all duration-300 ${
+                              selectedSizes[p.id] === size
+                                ? "bg-gold border-gold text-ink"
+                                : "border-gold/15 bg-ink/20 text-bone/60 hover:border-gold/40 hover:text-bone"
+                            }`}
+                          >
+                            {size}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Order Button */}
+                    <button
+                      onClick={() => handleBuy(p)}
+                      className="group relative flex w-full items-center justify-center gap-3 bg-gold/10 border border-gold/30 hover:bg-gold hover:text-ink py-3.5 text-[9px] md:text-[10px] font-semibold tracking-[0.4em] text-gold transition-all duration-500 rounded-lg focus:outline-none focus:ring-1 focus:ring-gold/50 cursor-pointer"
+                    >
+                      <svg className="w-4 h-4 fill-current transition-transform group-hover:scale-110" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.024-.014-.507-.25-5.863-2.907-.367-.183-.556-.275-.713-.275-.157 0-.348.092-.713.275-5.357 2.656-5.839 2.893-5.863 2.907-.061.033-.102.098-.102.17v5.47c0 .072.041.137.102.17.024.014.507.25 5.863 2.907.367.183.556.275.713.275.157 0-.348-.092-.713-.275-5.357-2.656-5.839-2.893-5.863-2.907a.206.206 0 0 1-.102-.17v-5.47c0-.072.041-.137.102-.17zm-5.472-3.136c.072 0 .138-.041.17-.102l2.907-5.863a.206.206 0 0 0 0-.17c-.033-.061-.098-.102-.17-.102h-5.814c-.072 0-.138.041-.17.102l-2.907 5.863a.206.206 0 0 0 0 .17c.033.061.098.102.17.102h5.814z" />
+                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.003 5.324 5.328 0 11.859 0c3.166.001 6.141 1.233 8.378 3.471 2.238 2.238 3.469 5.214 3.469 8.381 0 6.536-5.325 11.86-11.859 11.86h-.001c-2.01-.001-3.993-.512-5.748-1.48L0 24zm6.577-4.147l.409.243c1.472.873 3.167 1.333 4.867 1.334h.005c5.385 0 9.766-4.381 9.771-9.77 0-2.611-1.015-5.066-2.859-6.91C16.924 2.906 14.471 1.89 11.86 1.89c-5.388 0-9.77 4.382-9.774 9.77-.001 1.815.49 3.585 1.417 5.127l.265.443-1.048 3.827 3.918-1.028zM17.89 15.02c-.3-.15-1.77-.874-2.046-.975-.276-.1-.476-.15-.676.15-.2.3-.775.975-.95 1.174-.175.2-.35.226-.65.075-.3-.15-1.265-.467-2.41-1.488-.89-.794-1.49-1.775-1.665-2.075-.175-.3-.019-.463.13-.612.135-.135.3-.35.45-.526.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.676-1.63-.925-2.235-.24-.58-.49-.5-.676-.51-.175-.01-.376-.01-.576-.01-.2 0-.526.075-.801.376-.275.3-1.05 1.027-1.05 2.507 0 1.48 1.075 2.907 1.225 3.11.15.2 2.11 3.225 5.12 4.525.715.31 1.275.495 1.71.635.72.23 1.375.197 1.89.12.576-.085 1.77-.723 2.02-.142.25.7.25 1.3.125 1.525-.125.224-.526.349-.826.199z" />
+                      </svg>
+                      ORDER ON WHATSAPP
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
+function Shop() {
+  const WHATSAPP_NUMBER = "916380354445"; // Studio WhatsApp number
+
+  const products = [
+    {
+      id: 1,
+      name: "Design Edition I",
+      meta: "Sage + Bone",
+      price: "₹2,499",
+      originalPrice: "₹2,999",
+      discount: "17% OFF",
+      img: set1[0],
+      description: "Sage green and bone cream diagonal split panel sweatshirt.",
+    },
+    {
+      id: 2,
+      name: "Design Edition II",
+      meta: "Burgundy + Sand",
+      price: "₹2,499",
+      originalPrice: "₹2,999",
+      discount: "17% OFF",
+      img: set2[0],
+      description: "Burgundy and cream split sweatshirt with gold piping.",
+    },
+    {
+      id: 3,
+      name: "Design Edition III",
+      meta: "Charcoal + Mustard",
+      price: "₹2,699",
+      originalPrice: "₹3,299",
+      discount: "18% OFF",
+      img: set3[0],
+      description: "Mustard yellow panel sandwiched between deep charcoal and bone white.",
+    },
+    {
+      id: 4,
+      name: "Design Edition IV",
+      meta: "Ember + Charcoal",
+      price: "₹2,599",
+      originalPrice: "₹3,099",
+      discount: "16% OFF",
+      img: set4[0],
+      description: "Deep charcoal sweatshirt split by warm ember piping.",
+    },
+    {
+      id: 5,
+      name: "Design Edition V",
+      meta: "Stone Grey",
+      price: "₹2,399",
+      originalPrice: "₹2,899",
+      discount: "17% OFF",
+      img: set5[0],
+      description: "Grey and black split sweatshirt with gold YAAZHI mark.",
+    },
+    {
+      id: 6,
+      name: "Design Edition VI",
+      meta: "Deep Crimson",
+      price: "₹2,699",
+      originalPrice: "₹3,299",
+      discount: "18% OFF",
+      img: set6[0],
+      description: "Deep crimson panels finished slowly with dual-tone ribbing.",
+    },
+  ];
+
+  const [selectedSizes, setSelectedSizes] = useState<Record<number, string>>({
+    1: "M", 2: "M", 3: "M", 4: "M", 5: "M", 6: "M"
+  });
+
+  const handleSizeChange = (productId: number, size: string) => {
+    setSelectedSizes(prev => ({ ...prev, [productId]: size }));
+  };
+
+  const handleBuy = (product: typeof products[0]) => {
+    const size = selectedSizes[product.id];
+    const imageUrl = typeof window !== "undefined"
+      ? window.location.origin + product.img
+      : product.img;
+
+    const message = `Hi YAAZHI, I would like to order:
+- Product: ${product.name} (${product.meta})
+- Original Price: ${product.originalPrice}
+- Discounted Price: ${product.price} (${product.discount})
+- Size: ${size}
+- Image: ${imageUrl}`;
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+    window.open(whatsappUrl, "_blank");
+  };
+
+  return (
+    <section id="shop" className="relative overflow-hidden py-24 md:py-36 bg-grain border-t border-gold/10">
+      <LogoWatermark className="-right-10 bottom-10 h-[250px] w-[250px] md:h-[500px] md:w-[500px] opacity-[0.02]" />
+      
+      <div className="mx-auto max-w-7xl px-6 md:px-10 relative z-10">
+        <FadeIn className="flex flex-col items-center text-center gap-4 md:gap-6 mb-16 md:mb-24">
+          <span className="text-[9px] md:text-[10px] tracking-[0.5em] text-gold font-semibold">— THE ACQUISITIONS</span>
+          <h2 className="display-title text-2xl sm:text-3xl md:text-7xl text-bone">
+            AVAILABLE <span className="text-gold-gradient">EDITIONS</span>
+          </h2>
+          <p className="max-w-xl text-xs sm:text-sm text-foreground/50 font-light leading-relaxed">
+            Slow-crafted garments, tailored to order. Direct communication via WhatsApp ensures sizing alignment and a tailored fit.
+          </p>
+        </FadeIn>
+
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {products.map((p, idx) => (
+            <FadeIn key={p.id} delay={(idx % 3) * 150} className="flex">
+              <div className="group flex flex-col justify-between w-full border border-gold/10 bg-ink/40 rounded-xl overflow-hidden backdrop-blur-md transition-all duration-500 hover:border-gold/30 hover:shadow-[0_0_30px_rgba(212,175,55,0.05)]">
+                {/* Image area */}
+                <div className="relative aspect-[3/4] overflow-hidden bg-black/20">
+                  <img
+                    src={p.img}
+                    alt={p.name}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent opacity-60" />
+                  {/* Floating Discount Badge */}
+                  <div className="absolute top-4 right-4 bg-ember/90 border border-ember/20 px-2.5 py-1 text-[9px] tracking-wider font-bold text-bone rounded-md backdrop-blur-sm shadow-md uppercase">
+                    {p.discount}
+                  </div>
+                </div>
+
+                {/* Content details */}
+                <div className="p-6 md:p-8 flex flex-col justify-between flex-grow gap-6">
+                  <div className="space-y-3">
+                    <div>
+                      <div className="text-[8px] md:text-[9px] tracking-[0.3em] text-gold-deep font-semibold uppercase">{p.meta}</div>
+                      <h3 className="display-title text-lg md:text-xl text-bone mt-1">{p.name}</h3>
+                      {/* Price Section */}
+                      <div className="flex items-baseline gap-2.5 mt-2">
+                        <span className="text-xl font-bold text-gold">{p.price}</span>
+                        <span className="text-sm text-foreground/45 line-through">{p.originalPrice}</span>
+                      </div>
+                    </div>
+                    <p className="text-[12px] md:text-[13px] leading-relaxed text-foreground/50 font-light">
+                      {p.description}
+                    </p>
+                  </div>
+
+                  <div className="space-y-4">
+                    {/* Size Selector */}
+                    <div className="flex items-center justify-between border-t border-gold/5 pt-4">
+                      <span className="text-[9px] tracking-[0.2em] font-semibold text-gold-soft">SIZE</span>
+                      <div className="flex gap-1.5">
+                        {["S", "M", "L", "XL", "XXL"].map(size => (
+                          <button
+                            key={size}
+                            onClick={() => handleSizeChange(p.id, size)}
+                            className={`w-7 h-7 flex items-center justify-center text-[10px] font-semibold border rounded transition-all duration-300 ${
+                              selectedSizes[p.id] === size
+                                ? "bg-gold border-gold text-ink"
+                                : "border-gold/15 bg-ink/20 text-bone/60 hover:border-gold/40 hover:text-bone"
+                            }`}
+                          >
+                            {size}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Order Button */}
+                    <button
+                      onClick={() => handleBuy(p)}
+                      className="group relative flex w-full items-center justify-center gap-3 bg-gold/10 border border-gold/30 hover:bg-gold hover:text-ink py-3.5 text-[9px] md:text-[10px] font-semibold tracking-[0.4em] text-gold transition-all duration-500 rounded-lg focus:outline-none focus:ring-1 focus:ring-gold/50 cursor-pointer"
+                    >
+                      <svg className="w-4 h-4 fill-current transition-transform group-hover:scale-110" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.024-.014-.507-.25-5.863-2.907-.367-.183-.556-.275-.713-.275-.157 0-.348.092-.713.275-5.357 2.656-5.839 2.893-5.863 2.907-.061.033-.102.098-.102.17v5.47c0 .072.041.137.102.17.024.014.507.25 5.863 2.907.367.183.556.275.713.275.157 0-.348-.092-.713-.275-5.357-2.656-5.839-2.893-5.863-2.907a.206.206 0 0 1-.102-.17v-5.47c0-.072.041-.137.102-.17zm-5.472-3.136c.072 0 .138-.041.17-.102l2.907-5.863a.206.206 0 0 0 0-.17c-.033-.061-.098-.102-.17-.102h-5.814c-.072 0-.138.041-.17.102l-2.907 5.863a.206.206 0 0 0 0 .17c.033.061.098.102.17.102h5.814z" />
+                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.003 5.324 5.328 0 11.859 0c3.166.001 6.141 1.233 8.378 3.471 2.238 2.238 3.469 5.214 3.469 8.381 0 6.536-5.325 11.86-11.859 11.86h-.001c-2.01-.001-3.993-.512-5.748-1.48L0 24zm6.577-4.147l.409.243c1.472.873 3.167 1.333 4.867 1.334h.005c5.385 0 9.766-4.381 9.771-9.77 0-2.611-1.015-5.066-2.859-6.91C16.924 2.906 14.471 1.89 11.86 1.89c-5.388 0-9.77 4.382-9.774 9.77-.001 1.815.49 3.585 1.417 5.127l.265.443-1.048 3.827 3.918-1.028zM17.89 15.02c-.3-.15-1.77-.874-2.046-.975-.276-.1-.476-.15-.676.15-.2.3-.775.975-.95 1.174-.175.2-.35.226-.65.075-.3-.15-1.265-.467-2.41-1.488-.89-.794-1.49-1.775-1.665-2.075-.175-.3-.019-.463.13-.612.135-.135.3-.35.45-.526.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.676-1.63-.925-2.235-.24-.58-.49-.5-.676-.51-.175-.01-.376-.01-.576-.01-.2 0-.526.075-.801.376-.275.3-1.05 1.027-1.05 2.507 0 1.48 1.075 2.907 1.225 3.11.15.2 2.11 3.225 5.12 4.525.715.31 1.275.495 1.71.635.72.23 1.375.197 1.89.12.576-.085 1.77-.723 2.02-.142.25.7.25 1.3.125 1.525-.125.224-.526.349-.826.199z" />
+                      </svg>
+                      ORDER ON WHATSAPP
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
       </div>
     </section>
   );
