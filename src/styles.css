@@ -78,3 +78,9 @@
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
+
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}

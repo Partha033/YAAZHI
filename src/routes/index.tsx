@@ -139,13 +139,13 @@ function Nav() {
     <>
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-ink/90 backdrop-blur-xl border-b border-gold/10 py-4" : "bg-transparent py-6 md:py-8"}`}>
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 md:px-10">
-          <div className="flex items-center gap-3 md:gap-4">
-            <img src={logoImg} alt="" className="h-8 w-8 md:h-10 md:w-10 object-contain drop-shadow-[0_0_15px_rgba(212,175,55,0.3)]" />
-            <div className="leading-none">
-              <div className="font-serif text-lg md:text-xl tracking-[0.35em] text-gold-soft">YAAZHI</div>
+          <a href="/" className="flex items-center gap-3 md:gap-4 cursor-pointer group">
+            <img src={logoImg} alt="YAAZHI Home" className="h-8 w-8 md:h-10 md:w-10 object-contain drop-shadow-[0_0_15px_rgba(212,175,55,0.3)] transition-transform duration-300 group-hover:scale-105" />
+            <div className="leading-none transition-colors">
+              <div className="font-serif text-lg md:text-xl tracking-[0.35em] text-gold-soft transition-colors duration-300 group-hover:text-gold">YAAZHI</div>
               <div className="mt-1.5 text-[7px] md:text-[9px] tracking-[0.5em] text-gold-deep">EST. 2026</div>
             </div>
-          </div>
+          </a>
           
           <nav className="hidden gap-10 text-[10px] font-semibold tracking-[0.35em] text-foreground/70 md:flex">
             <a href="#story" className="hover:text-gold transition-colors">STORY</a>
