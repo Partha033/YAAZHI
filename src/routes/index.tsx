@@ -585,6 +585,10 @@ function Featured() {
       textGlow: "group-hover:text-orange-300",
       badgeBg: "bg-orange-500/10 text-orange-400 border-orange-500/20",
       img: hessonLookbook,
+      imgs: set1,
+      name: "Design Edition I",
+      meta: "Sage + Bone · No. 01",
+      copy: "Curated angles showcasing the seamless integration of raw cuts and diagonal geometry.",
     },
     {
       n: "04",
@@ -651,6 +655,52 @@ function Featured() {
       textGlow: "group-hover:text-red-400",
       badgeBg: "bg-red-600/10 text-red-400 border-red-600/20",
       img: rubyLookbook,
+      imgs: set2,
+      name: "Design Edition II",
+      meta: "Burgundy + Sand · No. 02",
+      copy: "A structured exploration of contrast and symmetry in dual-tone paneling.",
+    },
+    {
+      imgs: set3,
+      name: "Design Edition III",
+      meta: "Charcoal + Mustard · No. 03",
+      copy: "Designed with custom heavy-weight fabrics, focused on line continuity and neck collar precision.",
+    },
+    {
+      imgs: set4,
+      name: "Design Edition IV",
+      meta: "Ember + Charcoal · No. 04",
+      copy: "Asymmetric paneling meets organic tones, tailored for a fluid, relaxed silhouette.",
+    },
+    {
+      imgs: set5,
+      name: "Design Edition V",
+      meta: "Stone Grey · No. 05",
+      copy: "Minimalist aesthetics paired with robust seam detailing, crafted for durability.",
+    },
+    {
+      imgs: set6,
+      name: "Design Edition VI",
+      meta: "Deep Crimson · No. 06",
+      copy: "Contrasting block panels defined by a gold thread seam line, finished slowly.",
+    },
+    {
+      imgs: set7,
+      name: "Design Edition VII",
+      meta: "Teal + Bone · No. 07",
+      copy: "A balance of soft sand shades and deep charcoal tones, creating a timeless look.",
+    },
+    {
+      imgs: set8,
+      name: "Design Edition VIII",
+      meta: "Indigo + Ivory · No. 08",
+      copy: "Bold geometric intersections of cream, burgundy, and slate grey panels.",
+    },
+    {
+      imgs: set9,
+      name: "Design Edition IX",
+      meta: "Obsidian Black · No. 09",
+      copy: "The final chapter in this series, focused on fine details, ribbed cuffs, and precise stitching.",
     },
   ];
 
@@ -670,6 +720,12 @@ function Featured() {
           </h2>
           <p className="max-w-2xl text-xs sm:text-sm text-foreground/50 font-light leading-relaxed">
             Nine sacred gems. Nine unique cuts. Inspired by ancient South Indian heritage, each piece in this upcoming capsule represents a timeless character story.
+        <FadeIn className="flex flex-col items-start gap-4 md:gap-6 border-l-2 border-gold pl-6 md:pl-8">
+          <span className="text-[9px] md:text-[10px] tracking-[0.5em] text-gold font-semibold">— FEATURED PIECES</span>
+          <h2 className="display-title text-2xl sm:text-3xl md:text-7xl text-gold-gradient">The Lineage.</h2>
+          <p className="mt-2 md:mt-4 max-w-xl text-xs sm:text-sm text-foreground/50 font-light leading-relaxed">
+            Nine design sets from our current chapter. Each is photographed where it
+            was made — under one warm light, against one long shadow.
           </p>
         </FadeIn>
 
@@ -728,196 +784,31 @@ function Featured() {
                   </FadeIn>
                 </div>
 
+        <div className="mt-20 md:mt-32 space-y-24 md:space-y-40">
+          {pieces.map((p, i) => (
+            <article
+              key={p.name}
+              className={`grid items-center gap-8 md:gap-16 md:grid-cols-12 ${i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""}`}
+            >
+              <div className="md:col-span-7">
+                <FadeIn delay={100} className="relative overflow-hidden p-1.5 md:p-2 border border-gold/10 bg-ink/30 backdrop-blur-xl rounded-sm shadow-2xl">
+                  <DesignImageArea images={p.imgs} name={p.name} />
+                  <LogoBadge className="right-4 top-4 md:right-6 md:top-6" />
+                </FadeIn>
+              </div>
+              <div className="md:col-span-5 md:px-10">
+                <FadeIn delay={200}>
+                  <div className="text-[8px] md:text-[10px] tracking-[0.4em] text-gold-deep mb-4 md:mb-6 font-semibold">{p.meta}</div>
+                  <h3 className="display-title text-xl sm:text-2xl md:text-6xl text-bone leading-tight">{p.name}</h3>
+                  <p className="mt-4 md:mt-8 font-serif text-base sm:text-lg md:text-2xl italic text-foreground/70 leading-relaxed">{p.copy}</p>
+                  <div className="mt-8 md:mt-12 flex items-center gap-4">
+                    <span className="hairline w-12 md:w-16" />
+                    <span className="text-[7px] md:text-[9px] tracking-[0.4em] font-semibold text-gold">CRAFTED IN-HOUSE</span>
+                  </div>
+                </FadeIn>
               </div>
             );
           })}
-        </div>
-
-      </div>
-    </section>
-  );
-}
-
-function Shop() {
-  const WHATSAPP_NUMBER = "916380354445"; // Studio WhatsApp number
-
-  const products = [
-    {
-      id: 1,
-      name: "Design Edition I",
-      meta: "Sage + Bone",
-      price: "₹2,499",
-      originalPrice: "₹2,999",
-      discount: "17% OFF",
-      img: set1[0],
-      description: "Sage green and bone cream diagonal split panel sweatshirt.",
-    },
-    {
-      id: 2,
-      name: "Design Edition II",
-      meta: "Burgundy + Sand",
-      price: "₹2,499",
-      originalPrice: "₹2,999",
-      discount: "17% OFF",
-      img: set2[0],
-      description: "Burgundy and cream split sweatshirt with gold piping.",
-    },
-    {
-      id: 3,
-      name: "Design Edition III",
-      meta: "Charcoal + Mustard",
-      price: "₹2,699",
-      originalPrice: "₹3,299",
-      discount: "18% OFF",
-      img: set3[0],
-      description: "Mustard yellow panel sandwiched between deep charcoal and bone white.",
-    },
-    {
-      id: 4,
-      name: "Design Edition IV",
-      meta: "Ember + Charcoal",
-      price: "₹2,599",
-      originalPrice: "₹3,099",
-      discount: "16% OFF",
-      img: set4[0],
-      description: "Deep charcoal sweatshirt split by warm ember piping.",
-    },
-    {
-      id: 5,
-      name: "Design Edition V",
-      meta: "Stone Grey",
-      price: "₹2,399",
-      originalPrice: "₹2,899",
-      discount: "17% OFF",
-      img: set5[0],
-      description: "Grey and black split sweatshirt with gold YAAZHI mark.",
-    },
-    {
-      id: 6,
-      name: "Design Edition VI",
-      meta: "Deep Crimson",
-      price: "₹2,699",
-      originalPrice: "₹3,299",
-      discount: "18% OFF",
-      img: set6[0],
-      description: "Deep crimson panels finished slowly with dual-tone ribbing.",
-    },
-  ];
-
-  const [selectedSizes, setSelectedSizes] = useState<Record<number, string>>({
-    1: "M", 2: "M", 3: "M", 4: "M", 5: "M", 6: "M"
-  });
-
-  const handleSizeChange = (productId: number, size: string) => {
-    setSelectedSizes(prev => ({ ...prev, [productId]: size }));
-  };
-
-  const handleBuy = (product: typeof products[0]) => {
-    const size = selectedSizes[product.id];
-    const imageUrl = typeof window !== "undefined"
-      ? window.location.origin + product.img
-      : product.img;
-
-    const message = `Hi YAAZHI, I would like to order:
-- Product: ${product.name} (${product.meta})
-- Original Price: ${product.originalPrice}
-- Discounted Price: ${product.price} (${product.discount})
-- Size: ${size}
-- Image: ${imageUrl}`;
-
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
-    window.open(whatsappUrl, "_blank");
-  };
-
-  return (
-    <section id="shop" className="relative overflow-hidden py-24 md:py-36 bg-grain border-t border-gold/10">
-      <LogoWatermark className="-right-10 bottom-10 h-[250px] w-[250px] md:h-[500px] md:w-[500px] opacity-[0.02]" />
-      
-      <div className="mx-auto max-w-7xl px-6 md:px-10 relative z-10">
-        <FadeIn className="flex flex-col items-center text-center gap-4 md:gap-6 mb-16 md:mb-24">
-          <span className="text-[9px] md:text-[10px] tracking-[0.5em] text-gold font-semibold">— THE ACQUISITIONS</span>
-          <h2 className="display-title text-2xl sm:text-3xl md:text-7xl text-bone">
-            AVAILABLE <span className="text-gold-gradient">EDITIONS</span>
-          </h2>
-          <p className="max-w-xl text-xs sm:text-sm text-foreground/50 font-light leading-relaxed">
-            Slow-crafted garments, tailored to order. Direct communication via WhatsApp ensures sizing alignment and a tailored fit.
-          </p>
-        </FadeIn>
-
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {products.map((p, idx) => (
-            <FadeIn key={p.id} delay={(idx % 3) * 150} className="flex">
-              <div className="group flex flex-col justify-between w-full border border-gold/10 bg-ink/40 rounded-xl overflow-hidden backdrop-blur-md transition-all duration-500 hover:border-gold/30 hover:shadow-[0_0_30px_rgba(212,175,55,0.05)]">
-                {/* Image area */}
-                <div className="relative aspect-[3/4] overflow-hidden bg-black/20">
-                  <img
-                    src={p.img}
-                    alt={p.name}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent opacity-60" />
-                  {/* Floating Discount Badge */}
-                  <div className="absolute top-4 right-4 bg-ember/90 border border-ember/20 px-2.5 py-1 text-[9px] tracking-wider font-bold text-bone rounded-md backdrop-blur-sm shadow-md uppercase">
-                    {p.discount}
-                  </div>
-                </div>
-
-                {/* Content details */}
-                <div className="p-6 md:p-8 flex flex-col justify-between flex-grow gap-6">
-                  <div className="space-y-3">
-                    <div>
-                      <div className="text-[8px] md:text-[9px] tracking-[0.3em] text-gold-deep font-semibold uppercase">{p.meta}</div>
-                      <h3 className="display-title text-lg md:text-xl text-bone mt-1">{p.name}</h3>
-                      {/* Price Section */}
-                      <div className="flex items-baseline gap-2.5 mt-2">
-                        <span className="text-xl font-bold text-gold">{p.price}</span>
-                        <span className="text-sm text-foreground/45 line-through">{p.originalPrice}</span>
-                      </div>
-                    </div>
-                    <p className="text-[12px] md:text-[13px] leading-relaxed text-foreground/50 font-light">
-                      {p.description}
-                    </p>
-                  </div>
-
-                  <div className="space-y-4">
-                    {/* Size Selector */}
-                    <div className="flex items-center justify-between border-t border-gold/5 pt-4">
-                      <span className="text-[9px] tracking-[0.2em] font-semibold text-gold-soft">SIZE</span>
-                      <div className="flex gap-1.5">
-                        {["S", "M", "L", "XL", "XXL"].map(size => (
-                          <button
-                            key={size}
-                            onClick={() => handleSizeChange(p.id, size)}
-                            className={`w-7 h-7 flex items-center justify-center text-[10px] font-semibold border rounded transition-all duration-300 ${
-                              selectedSizes[p.id] === size
-                                ? "bg-gold border-gold text-ink"
-                                : "border-gold/15 bg-ink/20 text-bone/60 hover:border-gold/40 hover:text-bone"
-                            }`}
-                          >
-                            {size}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Order Button */}
-                    <button
-                      onClick={() => handleBuy(p)}
-                      className="group relative flex w-full items-center justify-center gap-3 bg-gold/10 border border-gold/30 hover:bg-gold hover:text-ink py-3.5 text-[9px] md:text-[10px] font-semibold tracking-[0.4em] text-gold transition-all duration-500 rounded-lg focus:outline-none focus:ring-1 focus:ring-gold/50 cursor-pointer"
-                    >
-                      <svg className="w-4 h-4 fill-current transition-transform group-hover:scale-110" viewBox="0 0 24 24">
-                        <path d="M17.472 14.382c-.024-.014-.507-.25-5.863-2.907-.367-.183-.556-.275-.713-.275-.157 0-.348.092-.713.275-5.357 2.656-5.839 2.893-5.863 2.907-.061.033-.102.098-.102.17v5.47c0 .072.041.137.102.17.024.014.507.25 5.863 2.907.367.183.556.275.713.275.157 0-.348-.092-.713-.275-5.357-2.656-5.839-2.893-5.863-2.907a.206.206 0 0 1-.102-.17v-5.47c0-.072.041-.137.102-.17zm-5.472-3.136c.072 0 .138-.041.17-.102l2.907-5.863a.206.206 0 0 0 0-.17c-.033-.061-.098-.102-.17-.102h-5.814c-.072 0-.138.041-.17.102l-2.907 5.863a.206.206 0 0 0 0 .17c.033.061.098.102.17.102h5.814z" />
-                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.003 5.324 5.328 0 11.859 0c3.166.001 6.141 1.233 8.378 3.471 2.238 2.238 3.469 5.214 3.469 8.381 0 6.536-5.325 11.86-11.859 11.86h-.001c-2.01-.001-3.993-.512-5.748-1.48L0 24zm6.577-4.147l.409.243c1.472.873 3.167 1.333 4.867 1.334h.005c5.385 0 9.766-4.381 9.771-9.77 0-2.611-1.015-5.066-2.859-6.91C16.924 2.906 14.471 1.89 11.86 1.89c-5.388 0-9.77 4.382-9.774 9.77-.001 1.815.49 3.585 1.417 5.127l.265.443-1.048 3.827 3.918-1.028zM17.89 15.02c-.3-.15-1.77-.874-2.046-.975-.276-.1-.476-.15-.676.15-.2.3-.775.975-.95 1.174-.175.2-.35.226-.65.075-.3-.15-1.265-.467-2.41-1.488-.89-.794-1.49-1.775-1.665-2.075-.175-.3-.019-.463.13-.612.135-.135.3-.35.45-.526.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.676-1.63-.925-2.235-.24-.58-.49-.5-.676-.51-.175-.01-.376-.01-.576-.01-.2 0-.526.075-.801.376-.275.3-1.05 1.027-1.05 2.507 0 1.48 1.075 2.907 1.225 3.11.15.2 2.11 3.225 5.12 4.525.715.31 1.275.495 1.71.635.72.23 1.375.197 1.89.12.576-.085 1.77-.723 2.02-.142.25.7.25 1.3.125 1.525-.125.224-.526.349-.826.199z" />
-                      </svg>
-                      ORDER ON WHATSAPP
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </FadeIn>
-          ))}
         </div>
 
       </div>
