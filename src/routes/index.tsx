@@ -26,30 +26,104 @@ import emeraLookbook from "@/assets/EMERA.png";
 import pearlLookbook from "@/assets/LUMERA.png";
 import coralLookbook from "@/assets/CORA.png";
 import rubyLookbook from "@/assets/RUBIS.png";
+import era2Img from "@/assets/yazhi-era-2.png";
+import era3Img from "@/assets/yazhi-era-3.png";
+import era4Img from "@/assets/yazhi-era-4.png";
+
+import p1_1 from "@/assets/file_00000000004871fa849b025a395df9d7.png";
+import p1_2 from "@/assets/file_0000000014cc71fab0deacbe9cdc9ddf.png";
+import p1_3 from "@/assets/file_000000003f3c7209bd11e6018eab1dab.png";
+import p1_4 from "@/assets/file_0000000046a8720693fa9dc993139275.png";
+import p1_5 from "@/assets/file_0000000057e072068398fd55bfb705eb.png";
+import p1_6 from "@/assets/file_0000000078047209ab13b04f0650f32e.png";
+import p1_7 from "@/assets/file_00000000c2147209b41c23052b3e7dad.png";
+import p1_8 from "@/assets/file_00000000eef0720684f378c579676c38.png";
+
+import p2_1 from "@/assets/file_00000000a81071faa12cc7b0dbf859f0.png";
+import p2_2 from "@/assets/file_00000000c8b07208a179bbcb634bb1d9.png";
+import p2_3 from "@/assets/file_00000000f4a871fa8a8e22f7a3621d1f.png";
+import p2_4 from "@/assets/file_000000001b907208bef6b1c79869ae96.png";
+import p2_5 from "@/assets/file_0000000046a47208b37e359df732f294.png";
+import p2_6 from "@/assets/file_00000000081872089a6e349e6680ccb9.png";
+import p2_7 from "@/assets/file_00000000552872088225783ed747a7a5.png";
+
+import p3_1 from "@/assets/file_0000000000cc72078d9201f5ec0bf33e.png";
+import p3_2 from "@/assets/file_000000001c2c7207b6b3704331089a7e.png";
+import p3_3 from "@/assets/file_000000004dd4720794cc12e21b4c1432.png";
+import p3_4 from "@/assets/file_0000000059d072089bf1dc8b7ca7ec9d.png";
+import p3_5 from "@/assets/file_0000000028347207a07d20fec67593f7.png";
+
+import p4_1 from "@/assets/file_00000000e038722fb21eee67e3751141.png";
+import p4_2 from "@/assets/file_00000000e354722f9b1997808c0d34f7.png";
+import p4_3 from "@/assets/file_000000002c84722f8183168caf07b897.png";
+import p4_4 from "@/assets/file_0000000083b472099c2bde813a3669b4.png";
+import p4_5 from "@/assets/file_00000000712471f5bcc9cdc9353f0a88.png";
+import p4_6 from "@/assets/file_000000004100720c930484a95df61c9e.png";
+import p4_7 from "@/assets/file_0000000088247206b23fbc7d06809906.png";
+
+import p5_1 from "@/assets/file_00000000db78720885915cf1afe61832.png";
+import p5_2 from "@/assets/file_00000000fd90720887edc4265293bd85.png";
+import p5_3 from "@/assets/file_0000000020f87208997f572073e98c1e.png";
+import p5_4 from "@/assets/file_0000000022dc7208b78975a64f937ee2.png";
+import p5_5 from "@/assets/file_0000000060ec7208bcdae2172d5b024a.png";
+import p5_6 from "@/assets/file_00000000732c7208ba3a80e7bb862e41.png";
+import p5_7 from "@/assets/file_0000000005107208a2204f6136fba28e.png";
+
+import p6_1 from "@/assets/file_000000001f6871faac6a3a5a84a4449f.png";
+import p6_2 from "@/assets/file_00000000ea887208bd0894f78ebcd8b6.png";
+import p6_3 from "@/assets/file_00000000404072088c45d2a38a816e08.png";
+import p6_4 from "@/assets/file_0000000040007208a05f630bf24d49cb.png";
+import p6_5 from "@/assets/file_00000000df6c720894573880af367db9.png";
+import p6_6 from "@/assets/file_00000000fdf47208b978a447c15f7e7c.png";
+
+import p7_1 from "@/assets/file_00000000d97872079717ddb8e1b30b66.png";
+import p7_2 from "@/assets/file_00000000a8e87207a1e2812d976a234f.png";
+import p7_3 from "@/assets/file_000000001ee47208955822266f805a67.png";
+import p7_4 from "@/assets/file_000000004b8072099de32cc47065db3b.png";
+import p7_5 from "@/assets/file_000000005fd472068fed6d4fcae347c1.png";
+import p7_6 from "@/assets/file_0000000010bc720784366e2cde88bd34.png";
+import p7_7 from "@/assets/file_000000004590720781cb9a988d712878.png";
+
+import p8_1 from "@/assets/file_00000000295072088d88ba02eb9e6888.png";
+import p8_2 from "@/assets/file_0000000029e87208a565fedd1ec955c2.png";
+import p8_3 from "@/assets/file_000000003fec7208b1d9fdbf7377ef5e.png";
+import p8_4 from "@/assets/file_0000000020b472089d9e74f7017de6a5.png";
+import p8_5 from "@/assets/file_00000000b9147208aada82b073c06d29.png";
+import p8_6 from "@/assets/file_00000000b1bc71fa9856ba9fbd9c4031.png";
+import p8_7 from "@/assets/file_00000000ec64720881e1f9d728deab28.png";
+import p8_8 from "@/assets/file_00000000f0b472089f4f751260e5aba0.png";
+
+import p9_1 from "@/assets/file_000000001f6871faac6a3a5a84a4449f.png";
+import p9_2 from "@/assets/file_0000000052f47208a5f84a439626e94c.png";
+import p9_3 from "@/assets/file_00000000b1bc71fa9856ba9fbd9c4031.png";
+import p9_4 from "@/assets/file_000000000e3071fa8e262e8b7e350124.png";
+import p9_5 from "@/assets/file_00000000b21072098a2220d74d23431c.png";
+import p9_6 from "@/assets/file_00000000cdd8720892d290d5e8096943.png";
+import p9_7 from "@/assets/file_000000002a107208a539671c928df69a.png";
 
 const designImagesMap = import.meta.glob("@/assets/file_*.png", { eager: true, import: "default" });
 const designImages = Object.values(designImagesMap) as string[];
 
-const set1 = designImages.slice(0, 7);
-const set2 = designImages.slice(7, 15);
-const set3 = designImages.slice(15, 23);
-const set4 = designImages.slice(23, 31);
-const set5 = designImages.slice(31, 39);
-const set6 = designImages.slice(39, 47);
-const set7 = designImages.slice(47, 55);
-const set8 = designImages.slice(55, 63);
-const set9 = designImages.slice(63, 71);
+const set1 = [p1_1, p1_2, p1_3, p1_4, p1_5, p1_6, p1_7, p1_8];
+const set2 = [p2_1, p2_2, p2_3, p2_4, p2_5, p2_6, p2_7];
+const set3 = [p3_1, p3_2, p3_3, p3_4, p3_5];
+const set4 = [p4_1, p4_2, p4_3, p4_4, p4_5, p4_6, p4_7];
+const set5 = [p5_1, p5_2, p5_3, p5_4, p5_5, p5_6, p5_7];
+const set6 = [p6_1, p6_2, p6_3, p6_4, p6_5, p6_6];
+const set7 = [p7_1, p7_2, p7_3, p7_4, p7_5, p7_6, p7_7];
+const set8 = [p8_1, p8_2, p8_3, p8_4, p8_5, p8_6, p8_7, p8_8];
+const set9 = [p9_1, p9_2, p9_3, p9_4, p9_5, p9_6, p9_7];
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "YAAZHI ??? Wear Your Pride" },
+      { title: "YAAZHI — Wear Your Pride" },
       {
         name: "description",
         content:
-          "From sketch to fabric ??? YAAZHI is a craft-led apparel studio building each piece with intention. #WearYourStory",
+          "From sketch to fabric — YAAZHI is a craft-led apparel studio building each piece with intention. #WearYourStory",
       },
-      { property: "og:title", content: "YAAZHI ??? Wear Your Pride" },
+      { property: "og:title", content: "YAAZHI — Wear Your Pride" },
       {
         property: "og:description",
         content: "What starts on paper, comes to life in fabric.",
@@ -211,7 +285,7 @@ function Hero() {
           <img
             src={logoImg}
             alt="YAAZHI logo"
-            className="h-32 w-32 md:h-80 md:w-80 object-contain drop-shadow-[0_0_40px_rgba(212,175,55,0.6)]"
+            className="h-32 w-32 md:h-96 md:w-96 object-contain drop-shadow-[0_0_40px_rgba(212,175,55,0.6)]"
           />
         </FadeIn>
 
@@ -235,10 +309,10 @@ function Hero() {
         <FadeIn delay={700} className="mt-12 md:mt-16 flex flex-col items-center gap-6 md:gap-8">
           <a
             href="#works"
-            className="group relative inline-flex items-center justify-center w-full max-w-[280px] md:w-auto gap-4 border border-gold/30 bg-ink/50 backdrop-blur-md px-8 py-5 text-[10px] font-semibold tracking-[0.4em] text-gold transition-all hover:bg-gold/10 hover:border-gold/60 focus:outline-none focus:ring-1 focus:ring-gold/50"
+            className="group relative inline-flex items-center justify-center w-full max-w-[280px] md:w-auto gap-4 border border-gold/30 bg-ink/50 backdrop-blur-md px-8 py-5 text-[10px] font-display font-semibold tracking-[0.4em] text-gold transition-all hover:bg-gold/10 hover:border-gold/60 focus:outline-none focus:ring-1 focus:ring-gold/50"
           >
             EXPLORE THE WORKS
-            <span className="transition-transform group-hover:translate-x-2">???</span>
+            <span className="transition-transform group-hover:translate-x-2 text-xs">→</span>
           </a>
           <span className="text-[8px] md:text-[9px] tracking-[0.5em] text-foreground/30">#WEARYOURSTORY</span>
         </FadeIn>
@@ -275,58 +349,122 @@ function LogoBadge({ className = "" }: { className?: string }) {
 }
 
 function YazhiLegend() {
+  const [activePhoto, setActivePhoto] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActivePhoto((prev) => (prev + 1) % 3);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const eraImages = [
+    { src: era2Img, alt: "Yaazhi Era Design Showcase 2" },
+    { src: era3Img, alt: "Yaazhi Era Design Showcase 3" },
+    { src: era4Img, alt: "Yaazhi Era Design Showcase 4" }
+  ];
+
   return (
-    <section id="story" className="relative overflow-hidden py-12 md:py-36 bg-grain">
+    <section id="story" className="relative overflow-hidden py-20 md:py-36 bg-grain border-b border-gold/10">
       <LogoWatermark className="-right-10 top-10 h-[250px] w-[250px] md:-right-20 md:top-20 md:h-[500px] md:w-[500px]" />
       <LogoWatermark className="-left-10 bottom-10 h-[250px] w-[250px] md:-left-20 md:bottom-20 md:h-[500px] md:w-[500px]" />
       
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-10 relative z-10">
-        <div className="grid gap-8 md:gap-20 md:grid-cols-12 items-center">
+      <div className="mx-auto max-w-7xl px-6 md:px-10 relative z-10">
+        <div className="grid gap-12 lg:grid-cols-12 items-center">
           
-          {/* Yazhi Visual Explanation (Left) */}
-          <div className="col-span-1 md:col-span-5 flex flex-col items-center gap-4">
-            <FadeIn className="relative w-full max-w-[380px] overflow-hidden p-1 border border-gold/15 bg-ink/30 backdrop-blur-xl rounded-sm shadow-2xl group mx-auto">
-              <div className="relative overflow-hidden aspect-[4/5] md:aspect-[3/4] w-full bg-black/40">
-                <img
-                  src={heroImg}
-                  alt="YAAZHI Craftsmanship"
-                  loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover rounded-sm transition-transform duration-1000 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-transparent to-transparent opacity-45 pointer-events-none" />
-              </div>
-              <LogoBadge className="right-3 top-3 scale-75 opacity-70" />
-            </FadeIn>
-          </div>
-
-          {/* Text details explaining Yazhi (Right) */}
-          <div className="col-span-1 md:col-span-7">
-            <FadeIn delay={200} className="border-l-2 border-gold/20 pl-4 sm:pl-6 md:pl-12 space-y-4 md:space-y-6">
+          {/* Text content explaining The Navamani Chronicles (Left) */}
+          <div className="col-span-1 lg:col-span-7 space-y-8">
+            <FadeIn delay={100} className="border-l-2 border-gold pl-6 md:pl-8 space-y-6">
               <div>
-                <div className="text-[7px] md:text-[9px] tracking-[0.4em] text-gold font-semibold uppercase">??? THE LEGEND</div>
-                <h2 className="display-title mt-2 md:mt-3 text-xl sm:text-3xl md:text-5xl text-gold-gradient leading-tight">
-                  WHAT IS YAAZHI?
+                <div className="text-[8px] md:text-[9px] tracking-[0.5em] text-gold font-semibold uppercase">
+                  THE NAVAMANI CHRONICLES
+                </div>
+                <h2 className="display-title mt-3 text-3xl sm:text-4xl md:text-6xl text-gold-gradient leading-tight">
+                  OUR FIRST CHAPTER
                 </h2>
-                
-                {/* Explanatory description */}
-                <p className="font-serif text-sm sm:text-lg md:text-2xl leading-relaxed text-bone mt-3 md:mt-5 font-light italic">
-                  Yazhi is a mythical guardian from South India. It is a powerful symbol that combines the <span className="text-gold">strength of a lion</span>, the <span className="text-gold">wisdom of an elephant</span>, and the <span className="text-gold">speed of a horse</span>.
+              </div>
+              
+              <div className="space-y-4 font-serif text-base sm:text-lg md:text-xl text-bone/90 leading-relaxed font-light">
+                <p className="font-semibold italic text-gold-soft">
+                  Every legacy begins with a single step.
+                </p>
+                <p>
+                  For Yaazhi, that beginning is <strong className="text-gold-soft font-semibold">The Navamani Chronicles</strong>—our first chapter and the foundation of everything we aspire to become.
+                </p>
+                <p>
+                  In Tamil tradition, the <strong className="text-gold-soft font-semibold">Navamanigal</strong> are the Nine Precious Gems, each carrying its own character, rarity, and timeless value. Inspired by this legacy, we created nine original designs, each reimagined with a modern identity that reflects the spirit of one of these legendary gems.
                 </p>
               </div>
 
-              <div className="grid gap-4 md:gap-6 text-[10px] sm:text-xs leading-relaxed text-foreground/50 sm:grid-cols-2 font-light pt-3 md:pt-4 border-t border-gold/10">
-                <div>
-                  <div className="text-[7px] md:text-[9px] font-semibold tracking-[0.3em] text-gold mb-1 md:mb-2 uppercase">THE TEMPLE GUARDIAN</div>
-                  <p>
-                    Found carved into ancient temple pillars, the Yazhi stands as a fearless protector of sacred wisdom and heritage.
-                  </p>
+              <div className="py-4 border-y border-gold/10">
+                <p className="text-[10px] md:text-xs tracking-[0.2em] uppercase text-gold font-medium mb-3">
+                  The Nine Gems
+                </p>
+                <div className="flex flex-wrap gap-x-6 gap-y-3 font-serif text-sm md:text-base text-bone font-medium italic">
+                  {["Vaidur", "Neel", "Hesson", "Shapyr", "Diamo", "Rubis", "Lumera", "Cora", "Emera"].map((gem, index) => (
+                    <span key={gem} className="transition-colors hover:text-gold cursor-default flex items-center gap-2">
+                      <span className="text-[8px] text-gold/40">0{index + 1}</span>
+                      {gem}
+                    </span>
+                  ))}
                 </div>
-                <div>
-                  <div className="text-[7px] md:text-[9px] font-semibold tracking-[0.3em] text-gold mb-1 md:mb-2 uppercase">OUR MODERN IDENTITY</div>
-                  <p>
-                    We carry this fearless spirit in our clothing. At YAAZHI, we create unique, crafted garments built with strength and intention.
-                  </p>
+              </div>
+
+              <div className="space-y-4 text-xs sm:text-sm text-foreground/60 font-light leading-relaxed">
+                <p>
+                  These are not just names. They are symbols of craftsmanship, ambition, and the journey of a brand built from the ground up.
+                </p>
+                <p>
+                  Each piece represents a different facet of the Yaazhi story, yet together they form a single chronicle—a reminder that every great legacy begins with a precious first chapter.
+                </p>
+                <p className="font-serif text-sm sm:text-base italic text-gold-soft pt-2">
+                  The Navamani Chronicles is more than our first collection. It is the beginning of our legacy.
+                </p>
+                <div className="text-[10px] md:text-xs tracking-[0.4em] font-semibold text-gold uppercase pt-2">
+                  Nine Gems. Nine Stories. One Legacy.
                 </div>
+              </div>
+            </FadeIn>
+          </div>
+
+          {/* Visual Interactive Collage (Right) */}
+          <div className="col-span-1 lg:col-span-5 flex flex-col items-center gap-6">
+            <FadeIn delay={300} className="w-full">
+              {/* Main Active Image Showcase */}
+              <div className="relative w-full max-w-[420px] aspect-[4/5] md:aspect-[3/4] overflow-hidden p-1.5 border border-gold/20 bg-ink/30 backdrop-blur-xl rounded-sm shadow-2xl group mx-auto">
+                <div className="relative overflow-hidden w-full h-full bg-black/40">
+                  <img
+                    src={eraImages[activePhoto].src}
+                    alt={eraImages[activePhoto].alt}
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover rounded-sm transition-all duration-700 ease-out"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-transparent to-transparent opacity-60 pointer-events-none" />
+                </div>
+                <LogoBadge className="right-4 top-4 scale-75 opacity-70" />
+                
+                {/* Image Details overlay */}
+                <div className="absolute bottom-4 left-4 right-4 z-20 flex justify-between items-end">
+                  <div className="text-left">
+                    <span className="text-[8px] tracking-[0.4em] text-gold font-semibold uppercase">ERA ARCHIVE</span>
+                    <h4 className="font-serif text-xs text-bone italic">Plate 0{activePhoto + 2}</h4>
+                  </div>
+                  <span className="text-[9px] tracking-[0.3em] font-semibold text-gold/60">YAAZHI ®</span>
+                </div>
+              </div>
+
+              {/* Thumbnails to switch between the 3 images */}
+              <div className="flex justify-center gap-4 mt-6">
+                {eraImages.map((img, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setActivePhoto(idx)}
+                    className={`relative w-20 h-24 overflow-hidden rounded-sm border p-0.5 bg-ink/50 transition-all duration-300 ${activePhoto === idx ? "border-gold scale-105 shadow-[0_0_12px_rgba(212,175,55,0.4)]" : "border-gold/15 hover:border-gold/50 opacity-60 hover:opacity-100"}`}
+                    aria-label={`Show image ${idx + 1}`}
+                  >
+                    <img src={img.src} alt="" className="w-full h-full object-cover rounded-[1px]" />
+                  </button>
+                ))}
               </div>
             </FadeIn>
           </div>
@@ -350,7 +488,7 @@ function Process() {
     {
       n: "01",
       title: "From Sketch",
-      copy: "Every piece is drawn before it's cut. Lines, proportion, color ??? argued over until it's right.",
+      copy: "Every piece is drawn before it's cut. Lines, proportion, color — argued over until it's right.",
       img: sketchImg,
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-5 w-5 md:h-6 md:w-6">
@@ -374,7 +512,7 @@ function Process() {
     {
       n: "03",
       title: "Built With Craft",
-      copy: "Stitched on machines older than us. Gold piping, double seams, ribbed cuffs ??? finished slow.",
+      copy: "Stitched on machines older than us. Gold piping, double seams, ribbed cuffs — finished slow.",
       img: stitchImg,
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-5 w-5 md:h-6 md:w-6">
@@ -386,7 +524,7 @@ function Process() {
     {
       n: "04",
       title: "Made For You",
-      copy: "Wrapped in black kraft, sealed with a wax-string knot. Then it's yours ??? to wear like a story.",
+      copy: "Wrapped in black kraft, sealed with a wax-string knot. Then it's yours — to wear like a story.",
       img: finishImg,
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-5 w-5 md:h-6 md:w-6">
@@ -402,7 +540,7 @@ function Process() {
       <LogoWatermark className="left-1/2 top-1/2 h-[350px] w-[350px] md:h-[800px] md:w-[800px] -translate-x-1/2 -translate-y-1/2" />
       <div className="mx-auto max-w-7xl px-6 md:px-10 relative z-10">
         <FadeIn className="flex flex-col items-center text-center gap-4 md:gap-6">
-          <span className="text-[9px] md:text-[10px] tracking-[0.5em] text-gold font-semibold">??? THE PROCESS</span>
+          <span className="text-[9px] md:text-[10px] tracking-[0.5em] text-gold font-semibold">— THE PROCESS</span>
           <h2 className="display-title text-2xl sm:text-3xl md:text-7xl">
             <span className="text-bone">FROM SKETCH </span>
             <span className="text-ember">TO FABRIC.</span>
@@ -533,7 +671,7 @@ function DesignImageArea({ images, name }: { images: string[]; name: string }) {
             className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-8 h-8 flex items-center justify-center rounded-full border border-gold/20 bg-ink/75 hover:bg-gold/10 text-gold-soft hover:text-gold transition-all duration-300 disabled:opacity-0 opacity-0 group-hover:opacity-100 cursor-pointer hidden md:flex"
             aria-label="Previous slide"
           >
-            ???
+            ←
           </button>
           <button
             onClick={() => scrollToIdx(Math.min(images.length - 1, currentIdx + 1))}
@@ -541,7 +679,7 @@ function DesignImageArea({ images, name }: { images: string[]; name: string }) {
             className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-8 h-8 flex items-center justify-center rounded-full border border-gold/20 bg-ink/75 hover:bg-gold/10 text-gold-soft hover:text-gold transition-all duration-300 disabled:opacity-0 opacity-0 group-hover:opacity-100 cursor-pointer hidden md:flex"
             aria-label="Next slide"
           >
-            ???
+            →
           </button>
         </>
       )}
@@ -639,7 +777,7 @@ function Featured() {
         {/* Intro Header & Banner */}
         <FadeIn className="flex flex-col items-center text-center gap-4 mb-20 md:mb-28">
           <span className="text-[9px] md:text-[10px] tracking-[0.5em] text-gold font-semibold uppercase">
-            ??? THE NAVAMANI CHRONICLES
+            — THE NAVAMANI CHRONICLES
           </span>
           <h2 className="display-title text-3xl sm:text-4xl md:text-7xl text-gold-gradient leading-tight">
             THE CHRONICLES.
@@ -665,6 +803,18 @@ function Featured() {
             const isEven = idx % 2 === 0;
             const primaryColorClass = s.badgeBg.split(' ')[0].replace('bg-', '').replace('/10', '');
             
+            const titleColorMap: Record<string, string> = {
+              "VAIDUR": "text-slate-400",
+              "NEEL": "bg-gradient-to-r from-blue-400 via-indigo-400 to-blue-500 bg-clip-text text-transparent",
+              "HESSON": "bg-gradient-to-r from-orange-400 via-amber-500 to-orange-500 bg-clip-text text-transparent",
+              "SHAPYR": "bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-400 bg-clip-text text-transparent",
+              "DIAMO": "bg-gradient-to-r from-zinc-100 via-white to-zinc-300 bg-clip-text text-transparent",
+              "EMERA": "bg-gradient-to-r from-emerald-400 via-green-400 to-emerald-500 bg-clip-text text-transparent",
+              "PEARL": "bg-gradient-to-r from-stone-200 via-stone-100 to-stone-300 bg-clip-text text-transparent",
+              "CORAL": "bg-gradient-to-r from-rose-400 via-red-400 to-orange-400 bg-clip-text text-transparent",
+              "RUBY": "bg-gradient-to-r from-red-500 via-rose-600 to-red-650 bg-clip-text text-transparent"
+            };
+
             return (
               <div key={s.name} className="grid gap-12 lg:grid-cols-12 items-center">
                 
@@ -688,10 +838,10 @@ function Featured() {
                 <div className={`lg:col-span-6 ${isEven ? 'lg:pl-10 order-1 lg:order-2' : 'lg:pr-10 order-1'}`}>
                   <FadeIn className={`flex flex-col items-start gap-4 md:gap-6 border-l-2 border-${primaryColorClass} pl-6 md:pl-8`}>
                     <span className={`text-[8px] md:text-[9px] tracking-[0.4em] text-${primaryColorClass} font-semibold uppercase`}>
-                      FEATURED CHRONICLE ?? {s.n}
+                      FEATURED CHRONICLE — {s.n}
                     </span>
                     
-                    <h3 className="display-title text-3xl sm:text-4xl md:text-5xl text-bone leading-tight">
+                    <h3 className={`display-title text-3xl sm:text-4xl md:text-5xl leading-tight pb-1 ${titleColorMap[s.name] || 'text-bone'}`}>
                       {s.name}.<br />
                       {s.gem.includes(" (") ? s.gem.split(' (')[0].toUpperCase() : s.gem.toUpperCase()}.
                     </h3>
@@ -708,7 +858,7 @@ function Featured() {
                     <div className="mt-4 flex items-center gap-4">
                       <span className={`hairline w-12 md:w-16 bg-${primaryColorClass}/50`} />
                       <span className={`text-[8px] md:text-[9px] tracking-[0.4em] font-semibold text-${primaryColorClass} uppercase`}>
-                        {s.tagline.replace(/ ?? /g, ' + ')}
+                        {s.tagline.replace(/ · /g, ' + ')}
                       </span>
                     </div>
                   </FadeIn>
@@ -759,8 +909,8 @@ function Shop() {
       id: 1,
       name: "Design Edition I",
       meta: "Sage + Bone",
-      price: "???2,499",
-      originalPrice: "???2,999",
+      price: "₹2,499",
+      originalPrice: "₹2,999",
       discount: "17% OFF",
       img: set1[0],
       description: "Sage green and bone cream diagonal split panel sweatshirt.",
@@ -769,8 +919,8 @@ function Shop() {
       id: 2,
       name: "Design Edition II",
       meta: "Burgundy + Sand",
-      price: "???2,499",
-      originalPrice: "???2,999",
+      price: "₹2,499",
+      originalPrice: "₹2,999",
       discount: "17% OFF",
       img: set2[0],
       description: "Burgundy and cream split sweatshirt with gold piping.",
@@ -779,8 +929,8 @@ function Shop() {
       id: 3,
       name: "Design Edition III",
       meta: "Charcoal + Mustard",
-      price: "???2,699",
-      originalPrice: "???3,299",
+      price: "₹2,699",
+      originalPrice: "₹3,299",
       discount: "18% OFF",
       img: set3[0],
       description: "Mustard yellow panel sandwiched between deep charcoal and bone white.",
@@ -789,8 +939,8 @@ function Shop() {
       id: 4,
       name: "Design Edition IV",
       meta: "Ember + Charcoal",
-      price: "???2,599",
-      originalPrice: "???3,099",
+      price: "₹2,599",
+      originalPrice: "₹3,099",
       discount: "16% OFF",
       img: set4[0],
       description: "Deep charcoal sweatshirt split by warm ember piping.",
@@ -799,8 +949,8 @@ function Shop() {
       id: 5,
       name: "Design Edition V",
       meta: "Stone Grey",
-      price: "???2,399",
-      originalPrice: "???2,899",
+      price: "₹2,399",
+      originalPrice: "₹2,899",
       discount: "17% OFF",
       img: set5[0],
       description: "Grey and black split sweatshirt with gold YAAZHI mark.",
@@ -809,8 +959,8 @@ function Shop() {
       id: 6,
       name: "Design Edition VI",
       meta: "Deep Crimson",
-      price: "???2,699",
-      originalPrice: "???3,299",
+      price: "₹2,699",
+      originalPrice: "₹3,299",
       discount: "18% OFF",
       img: set6[0],
       description: "Deep crimson panels finished slowly with dual-tone ribbing.",
@@ -849,7 +999,7 @@ function Shop() {
       
       <div className="mx-auto max-w-7xl px-6 md:px-10 relative z-10">
         <FadeIn className="flex flex-col items-center text-center gap-4 md:gap-6 mb-16 md:mb-24">
-          <span className="text-[9px] md:text-[10px] tracking-[0.5em] text-gold font-semibold">??? THE ACQUISITIONS</span>
+          <span className="text-[9px] md:text-[10px] tracking-[0.5em] text-gold font-semibold">— THE ACQUISITIONS</span>
           <h2 className="display-title text-2xl sm:text-3xl md:text-7xl text-bone">
             AVAILABLE <span className="text-gold-gradient">EDITIONS</span>
           </h2>
@@ -943,7 +1093,7 @@ function Gallery() {
       <LogoWatermark className="left-1/2 top-1/2 h-[350px] w-[350px] md:h-[900px] md:w-[900px] -translate-x-1/2 -translate-y-1/2" />
       <div className="mx-auto max-w-7xl px-4 md:px-10 relative z-10">
         <FadeIn className="flex flex-col items-center text-center gap-4 md:gap-6">
-          <span className="text-[9px] md:text-[10px] tracking-[0.5em] text-gold font-semibold">??? THE ARCHIVE</span>
+          <span className="text-[9px] md:text-[10px] tracking-[0.5em] text-gold font-semibold">— THE ARCHIVE</span>
           <h2 className="display-title text-2xl sm:text-3xl md:text-7xl text-bone">
             Ten Pieces. <span className="text-ember block sm:inline">One Story.</span>
           </h2>
@@ -992,7 +1142,7 @@ function Contact() {
               <span className="text-gold-deep">story.</span>
             </h2>
             <p className="mt-6 md:mt-8 max-w-md font-serif text-base sm:text-lg md:text-2xl italic text-foreground/50">
-              Commissions, collaborations, or just a kind word ??? we read every letter.
+              Commissions, collaborations, or just a kind word — we read every letter.
             </p>
             <div className="mt-12 md:mt-16 space-y-6 md:space-y-8 text-[11px] md:text-xs tracking-[0.2em] text-foreground/60">
               <div>
@@ -1033,7 +1183,7 @@ function Contact() {
             {sent ? (
               <div className="flex items-center justify-center border border-gold/20 bg-ink/40 backdrop-blur-md p-10 md:p-16 text-center">
                 <p className="font-serif text-2xl md:text-3xl italic text-gold">
-                  ??? Thank you. <br className="md:hidden" /> We'll write back soon.
+                  ✓ Thank you. <br className="md:hidden" /> We'll write back soon.
                 </p>
               </div>
             ) : (
@@ -1070,10 +1220,10 @@ function Contact() {
                 </div>
                 <button
                   type="submit"
-                  className="group relative inline-flex w-full items-center justify-center gap-4 bg-gold/10 border border-gold/30 py-4 md:py-5 text-[9px] md:text-[10px] font-semibold tracking-[0.4em] text-gold hover:bg-gold hover:text-ink transition-all focus:outline-none focus:ring-2 focus:ring-gold/50"
+                  className="group relative inline-flex w-full items-center justify-center gap-4 bg-gold/10 border border-gold/30 py-4 md:py-5 text-[9px] md:text-[10px] font-display font-semibold tracking-[0.4em] text-gold hover:bg-gold hover:text-ink transition-all focus:outline-none focus:ring-2 focus:ring-gold/50 cursor-pointer"
                 >
                   SEND LETTER
-                  <span className="transition-transform group-hover:translate-x-2">???</span>
+                  <span className="transition-transform group-hover:translate-x-2 text-xs">→</span>
                 </button>
               </form>
             )}
@@ -1126,7 +1276,7 @@ function Footer() {
           What starts on paper, comes to life in fabric.
         </p>
         <div className="text-[7px] md:text-[9px] tracking-[0.5em] text-foreground/30 mt-4 md:mt-8 font-semibold">
-          ?? {new Date().getFullYear()} YAAZHI WEARS <br className="sm:hidden mt-2"/> <span className="hidden sm:inline">??</span> #WEARYOURSTORY
+          © {new Date().getFullYear()} YAAZHI WEARS <br className="sm:hidden mt-2"/> <span className="hidden sm:inline">·</span> #WEARYOURSTORY
         </div>
       </div>
     </footer>
