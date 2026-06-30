@@ -248,12 +248,12 @@ function Nav() {
             </div>
           </a>
           
-          <nav className="hidden gap-10 text-[10px] font-semibold tracking-[0.35em] text-foreground/70 md:flex">
-            <a href="#story" className="hover:text-gold transition-colors">STORY</a>
-            <a href="#process" className="hover:text-gold transition-colors">PROCESS</a>
-            <a href="#works" className="hover:text-gold transition-colors">WORKS</a>
-            <a href="#shop" className="hover:text-gold transition-colors">SHOP</a>
-            <a href="#contact" className="hover:text-gold transition-colors">CONTACT</a>
+          <nav className="hidden gap-10 text-[9px] font-semibold tracking-[0.35em] text-foreground/70 md:flex">
+            <a href="#story" className="hover:text-gold transition-colors">THE LEGEND</a>
+            <a href="#process" className="hover:text-gold transition-colors">THE PROCESS</a>
+            <a href="#works" className="hover:text-gold transition-colors">THE CHRONICLES</a>
+            <a href="#shop" className="hover:text-gold transition-colors">THE SHOP</a>
+            <a href="#contact" className="hover:text-gold transition-colors">CONTACT STUDIO</a>
           </nav>
 
           <div className="flex items-center gap-4 md:hidden">
@@ -262,7 +262,7 @@ function Nav() {
                 href="#shop" 
                 className="text-[9px] font-semibold tracking-[0.25em] text-gold border border-gold/25 px-3 py-1.5 rounded-sm bg-gold/5 hover:bg-gold/15 transition-all duration-300"
               >
-                SHOP
+                THE SHOP
               </a>
             )}
             <button 
@@ -287,12 +287,12 @@ function Nav() {
       <div 
         className={`fixed inset-0 z-40 bg-ink/95 backdrop-blur-3xl transition-opacity duration-500 md:hidden flex items-center justify-center ${menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
       >
-        <nav className="flex flex-col items-center gap-12 text-sm font-semibold tracking-[0.4em] text-gold-soft">
-          <a href="#story" onClick={() => setMenuOpen(false)} className="hover:text-gold transition-colors px-6 py-3">STORY</a>
-          <a href="#process" onClick={() => setMenuOpen(false)} className="hover:text-gold transition-colors px-6 py-3">PROCESS</a>
-          <a href="#works" onClick={() => setMenuOpen(false)} className="hover:text-gold transition-colors px-6 py-3">WORKS</a>
-          <a href="#shop" onClick={() => setMenuOpen(false)} className="hover:text-gold transition-colors px-6 py-3">SHOP</a>
-          <a href="#contact" onClick={() => setMenuOpen(false)} className="hover:text-gold transition-colors px-6 py-3">CONTACT</a>
+        <nav className="flex flex-col items-center gap-10 text-sm font-semibold tracking-[0.4em] text-gold-soft">
+          <a href="#story" onClick={() => setMenuOpen(false)} className="hover:text-gold transition-colors px-6 py-2.5">THE LEGEND</a>
+          <a href="#process" onClick={() => setMenuOpen(false)} className="hover:text-gold transition-colors px-6 py-2.5">THE PROCESS</a>
+          <a href="#works" onClick={() => setMenuOpen(false)} className="hover:text-gold transition-colors px-6 py-2.5">THE CHRONICLES</a>
+          <a href="#shop" onClick={() => setMenuOpen(false)} className="hover:text-gold transition-colors px-6 py-2.5">THE SHOP</a>
+          <a href="#contact" onClick={() => setMenuOpen(false)} className="hover:text-gold transition-colors px-6 py-2.5">CONTACT STUDIO</a>
         </nav>
       </div>
     </>
@@ -1167,16 +1167,7 @@ function Shop() {
   };
 
   const handleWhatsAppOrder = (p: typeof products[0], size: string) => {
-    const imageUrl = typeof window !== "undefined"
-      ? window.location.origin + p.img
-      : p.img;
-    const message = `Hi YAAZHI, I would like to order:
-- Product: ${p.name} (${p.meta})
-- Sizing Selected: ${size}
-- Price Details: ${p.price} (Original: ${p.originalPrice}, Discount: ${p.discount})
-- Design Fabric Notes: ${p.description}
-- Design Reference Image: ${imageUrl}
-- Handcrafted in Salem, Tamil Nadu`;
+    const message = `Hi, I'd like to order ${p.name} (${p.meta}) in size ${size} — ${p.price}`;
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
     window.open(whatsappUrl, "_blank");
@@ -1275,7 +1266,7 @@ function Shop() {
       {/* Product Detail Modal */}
       {selectedProduct && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md p-4 overflow-y-auto">
-          <div className="relative w-full max-w-4xl bg-ink border border-gold/20 rounded-xl overflow-hidden shadow-2xl flex flex-col md:grid md:grid-cols-12 max-h-[90vh] md:max-h-[85vh]">
+          <div className="relative w-full max-w-4xl bg-ink border border-gold/20 rounded-xl overflow-hidden shadow-2xl flex flex-col md:grid md:grid-cols-12 h-[90vh] md:h-[620px] max-h-[90vh] md:max-h-[620px]">
             
             {/* Close Button */}
             <button
@@ -1331,7 +1322,7 @@ function Shop() {
             </div>
 
             {/* Right: details configuration and order layout */}
-            <div className="md:col-span-6 p-6 md:p-10 flex flex-col justify-between overflow-y-auto max-h-[calc(90vh-300px)] md:max-h-full">
+            <div className="md:col-span-6 p-6 md:p-10 flex flex-col justify-between overflow-y-auto h-[calc(90vh-300px)] md:h-full">
               <div className="space-y-6">
                 <div>
                   <div className="text-[8px] md:text-[9px] tracking-[0.3em] text-gold-deep font-semibold uppercase">{selectedProduct.meta}</div>
