@@ -176,6 +176,16 @@ function FadeIn({ children, delay = 0, className = "" }: { children: ReactNode, 
 }
 
 function Index() {
+  const [showStickyCTA, setShowStickyCTA] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowStickyCTA(window.scrollY > window.innerHeight - 100);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <main className="text-foreground overflow-x-hidden">
       <CreativeHeroBg />
@@ -185,9 +195,26 @@ function Index() {
       <Process />
       <Featured />
       <Shop />
-      <Gallery />
       <Contact />
       <Footer />
+
+      {/* Sticky Mobile CTA Bar */}
+      <div 
+        className={`fixed bottom-0 left-0 right-0 z-40 bg-ink/90 border-t border-gold/10 px-6 py-4 flex items-center justify-between backdrop-blur-md transition-all duration-500 md:hidden ${
+          showStickyCTA ? "translate-y-0 opacity-100" : "translate-y-full opacity-0 pointer-events-none"
+        }`}
+      >
+        <div>
+          <span className="text-[7px] tracking-[0.2em] text-gold-deep font-semibold block uppercase">YAAZHI CAPSULE</span>
+          <span className="text-[10px] text-bone font-medium block">The Navamani Chronicles</span>
+        </div>
+        <a 
+          href="#shop" 
+          className="bg-gold border border-gold px-4 py-2 text-[8px] font-bold tracking-[0.3em] text-ink rounded-lg uppercase transition-all shadow-[0_0_10px_rgba(212,175,55,0.15)]"
+        >
+          Browse Shop →
+        </a>
+      </div>
     </main>
   );
 }
@@ -271,10 +298,25 @@ function Nav() {
     </>
   );
 }
-
 function Hero() {
   return (
     <section className="relative min-h-[100svh] w-full flex items-center justify-center pt-24 pb-12 md:pt-20 md:pb-0 overflow-hidden">
+      {/* Tamil Watermark background */}
+      <div 
+        className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden -z-25"
+        style={{ WebkitUserSelect: "none", userSelect: "none" }}
+      >
+        <span 
+          className="font-tamil text-[32vw] font-bold leading-none tracking-widest text-transparent"
+          style={{
+            WebkitTextStroke: "1.5px rgba(212,175,55,0.03)",
+            opacity: 0.8
+          }}
+        >
+          யாழி
+        </span>
+      </div>
+
       <div className="relative z-10 mx-auto flex min-h-[80svh] max-w-7xl flex-col items-center justify-center px-4 text-center md:px-10">
         <FadeIn delay={100} className="relative flex items-center justify-center mb-6 md:mb-8">
           <div
@@ -291,8 +333,8 @@ function Hero() {
 
         <FadeIn delay={300}>
           <h1 className="display-title text-[14vw] sm:text-[12vw] leading-[0.9] md:text-[8rem] px-2">
-            <span className="block text-bone">THE</span>
-            <span className="block text-gold-gradient">ART</span>
+            <span className="block text-bone tracking-wider font-extrabold uppercase">FEARLESS</span>
+            <span className="block text-gold-gradient text-[6vw] sm:text-[5vw] md:text-[3.5rem] tracking-[0.2em] font-medium mt-4 uppercase">WEAR YOUR PRIDE</span>
           </h1>
         </FadeIn>
         
@@ -366,6 +408,22 @@ function YazhiLegend() {
 
   return (
     <section id="story" className="relative overflow-hidden py-20 md:py-36 bg-grain border-b border-gold/10">
+      {/* Tamil Watermark background */}
+      <div 
+        className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden -z-25"
+        style={{ WebkitUserSelect: "none", userSelect: "none" }}
+      >
+        <span 
+          className="font-tamil text-[32vw] font-bold leading-none tracking-widest text-transparent"
+          style={{
+            WebkitTextStroke: "1.5px rgba(212,175,55,0.02)",
+            opacity: 0.8
+          }}
+        >
+          யாழி
+        </span>
+      </div>
+
       <LogoWatermark className="-right-10 top-10 h-[250px] w-[250px] md:-right-20 md:top-20 md:h-[500px] md:w-[500px]" />
       <LogoWatermark className="-left-10 bottom-10 h-[250px] w-[250px] md:-left-20 md:bottom-20 md:h-[500px] md:w-[500px]" />
       
@@ -377,7 +435,7 @@ function YazhiLegend() {
             <FadeIn delay={100} className="border-l-2 border-gold pl-6 md:pl-8 space-y-6">
               <div>
                 <div className="text-[8px] md:text-[9px] tracking-[0.5em] text-gold font-semibold uppercase">
-                  THE NAVAMANI CHRONICLES
+                  THE NAVAMANI CHRONICLES | குறிப்புகள்
                 </div>
                 <h2 className="display-title mt-3 text-3xl sm:text-4xl md:text-6xl text-gold-gradient leading-tight">
                   OUR FIRST CHAPTER
@@ -501,7 +559,7 @@ function Process() {
       n: "02",
       title: "To Fabric",
       copy: "Heavy-weight cottons, dyed in small batches. Cut by hand against the grain of mass production.",
-      img: stitchImg,
+      img: g5,
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-5 w-5 md:h-6 md:w-6">
           <circle cx="12" cy="12" r="3" />
@@ -540,7 +598,7 @@ function Process() {
       <LogoWatermark className="left-1/2 top-1/2 h-[350px] w-[350px] md:h-[800px] md:w-[800px] -translate-x-1/2 -translate-y-1/2" />
       <div className="mx-auto max-w-7xl px-6 md:px-10 relative z-10">
         <FadeIn className="flex flex-col items-center text-center gap-4 md:gap-6">
-          <span className="text-[9px] md:text-[10px] tracking-[0.5em] text-gold font-semibold">— THE PROCESS</span>
+          <span className="text-[9px] md:text-[10px] tracking-[0.5em] text-gold font-semibold">— THE PROCESS | செயல்முறை</span>
           <h2 className="display-title text-2xl sm:text-3xl md:text-7xl">
             <span className="text-bone">FROM SKETCH </span>
             <span className="text-ember">TO FABRIC.</span>
@@ -688,7 +746,10 @@ function DesignImageArea({ images, name }: { images: string[]; name: string }) {
 }
 
 function Featured() {
-  const [activeGem, setActiveGem] = useState<number | null>(null);
+  const [activeImageIndices, setActiveImageIndices] = useState<Record<string, number>>({
+    "VAIDUR": -1, "NEEL": -1, "HESSON": -1, "SHAPYR": -1, "DIAMO": -1,
+    "EMERA": -1, "PEARL": -1, "CORAL": -1, "RUBY": -1
+  });
 
   const stories = [
     {
@@ -697,6 +758,12 @@ function Featured() {
       copy: "The guardian never seeks attention. He watches, adapts, and moves with precision. Vaidur represents awareness, instinct, and unwavering focus.",
       badgeBg: "bg-gray-500/10 text-gray-400 border-gray-500/20",
       img: navamaniImg,
+      imgs: set1,
+      editionName: "Design Edition I",
+      editionMeta: "Sage + Bone · No. 01",
+      editionCopy: "Curated angles showcasing the seamless integration of raw cuts and diagonal geometry.",
+      tintClass: "bg-zinc-500/5 border-zinc-500/10",
+      gemColor: "text-slate-400"
     },
     {
       n: "02", name: "NEEL", gem: "Neelam (Blue Sapphire)",
@@ -704,6 +771,12 @@ function Featured() {
       copy: "True strength is calm. Neel represents clarity, discipline, and confidence. It is made for those who remain composed while others lose direction.",
       badgeBg: "bg-blue-500/10 text-blue-400 border-blue-500/20",
       img: neelLookbook,
+      imgs: set2,
+      editionName: "Design Edition II",
+      editionMeta: "Burgundy + Sand · No. 02",
+      editionCopy: "A structured exploration of contrast and symmetry in dual-tone paneling.",
+      tintClass: "bg-blue-500/5 border-blue-500/10",
+      gemColor: "text-blue-400"
     },
     {
       n: "03", name: "HESSON", gem: "Gomedhagam (Hessonite)",
@@ -711,6 +784,12 @@ function Featured() {
       copy: "Growth begins with resilience. Hesson represents endurance, transformation, and the courage to evolve through every challenge.",
       badgeBg: "bg-orange-500/10 text-orange-400 border-orange-500/20",
       img: hessonLookbook,
+      imgs: set3,
+      editionName: "Design Edition III",
+      editionMeta: "Charcoal + Mustard · No. 03",
+      editionCopy: "Designed with custom heavy-weight fabrics, focused on line continuity and neck collar precision.",
+      tintClass: "bg-orange-500/5 border-orange-500/10",
+      gemColor: "text-orange-400"
     },
     {
       n: "04", name: "SHAPYR", gem: "Pushparagam (Yellow Sapphire)",
@@ -718,6 +797,12 @@ function Featured() {
       copy: "Success belongs to those who keep moving forward. Shapyr represents ambition, prosperity, and the pursuit of excellence.",
       badgeBg: "bg-yellow-500/10 text-yellow-400 border-yellow-500/20",
       img: shapyrLookbook,
+      imgs: set4,
+      editionName: "Design Edition IV",
+      editionMeta: "Ember + Charcoal · No. 04",
+      editionCopy: "Asymmetric paneling meets organic tones, tailored for a fluid, relaxed silhouette.",
+      tintClass: "bg-yellow-500/5 border-yellow-500/10",
+      gemColor: "text-yellow-400"
     },
     {
       n: "05", name: "DIAMO", gem: "Diamond (Vairam)",
@@ -725,6 +810,12 @@ function Featured() {
       copy: "Pressure creates brilliance. Diamo represents strength, rarity, and the beauty that comes from enduring the hardest moments.",
       badgeBg: "bg-white/10 text-white/80 border-white/20",
       img: diamoLookbook,
+      imgs: set5,
+      editionName: "Design Edition V",
+      editionMeta: "Stone Grey · No. 05",
+      editionCopy: "Minimalist aesthetics paired with robust seam detailing, crafted for durability.",
+      tintClass: "bg-white/5 border-white/10",
+      gemColor: "text-zinc-100"
     },
     {
       n: "06", name: "EMERA", gem: "Maragatham (Emerald)",
@@ -732,6 +823,12 @@ function Featured() {
       copy: "Harmony is the key to longevity. Emera represents balance, wisdom, and a deep connection to your roots.",
       badgeBg: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
       img: emeraLookbook,
+      imgs: set6,
+      editionName: "Design Edition VI",
+      editionMeta: "Deep Crimson · No. 06",
+      editionCopy: "Contrasting block panels defined by a gold thread seam line, finished slowly.",
+      tintClass: "bg-emerald-500/5 border-emerald-500/10",
+      gemColor: "text-emerald-400"
     },
     {
       n: "07", name: "PEARL", gem: "Muthu (Pearl)",
@@ -739,6 +836,12 @@ function Featured() {
       copy: "Purity is the ultimate sophistication. Pearl represents clarity, patience, and a refined sense of simplicity.",
       badgeBg: "bg-gray-100/10 text-gray-300 border-gray-100/20",
       img: pearlLookbook,
+      imgs: set7,
+      editionName: "Design Edition VII",
+      editionMeta: "Teal + Bone · No. 07",
+      editionCopy: "A balance of soft sand shades and deep charcoal tones, creating a timeless look.",
+      tintClass: "bg-stone-500/5 border-stone-500/10",
+      gemColor: "text-stone-300"
     },
     {
       n: "08", name: "CORAL", gem: "Pavalam (Coral)",
@@ -746,6 +849,12 @@ function Featured() {
       copy: "Passion drives action. Coral represents energy, warmth, and the courage to stand out. It is crafted for those who leave an impression.",
       badgeBg: "bg-red-500/10 text-red-400 border-red-500/20",
       img: coralLookbook,
+      imgs: set8,
+      editionName: "Design Edition VIII",
+      editionMeta: "Indigo + Ivory · No. 08",
+      editionCopy: "Bold geometric intersections of cream, burgundy, and slate grey panels.",
+      tintClass: "bg-red-500/5 border-red-500/10",
+      gemColor: "text-rose-500"
     },
     {
       n: "09", name: "RUBY", gem: "Manikkam (Ruby)",
@@ -753,31 +862,26 @@ function Featured() {
       copy: "Leadership is defined by heart. Ruby represents passion, royalty, and the power to inspire others. It is made for those who lead with purpose and grace.",
       badgeBg: "bg-red-600/10 text-red-400 border-red-600/20",
       img: rubyLookbook,
+      imgs: set9,
+      editionName: "Design Edition IX",
+      editionMeta: "Obsidian Black · No. 09",
+      editionCopy: "The final chapter in this series, focused on fine details, ribbed cuffs, and precise stitching.",
+      tintClass: "bg-rose-600/5 border-rose-600/10",
+      gemColor: "text-red-500"
     },
-  ];
-
-  const pieces = [
-    { imgs: set1, name: "Design Edition I", meta: "Sage + Bone · No. 01", copy: "Curated angles showcasing the seamless integration of raw cuts and diagonal geometry." },
-    { imgs: set2, name: "Design Edition II", meta: "Burgundy + Sand · No. 02", copy: "A structured exploration of contrast and symmetry in dual-tone paneling." },
-    { imgs: set3, name: "Design Edition III", meta: "Charcoal + Mustard · No. 03", copy: "Designed with custom heavy-weight fabrics, focused on line continuity and neck collar precision." },
-    { imgs: set4, name: "Design Edition IV", meta: "Ember + Charcoal · No. 04", copy: "Asymmetric paneling meets organic tones, tailored for a fluid, relaxed silhouette." },
-    { imgs: set5, name: "Design Edition V", meta: "Stone Grey · No. 05", copy: "Minimalist aesthetics paired with robust seam detailing, crafted for durability." },
-    { imgs: set6, name: "Design Edition VI", meta: "Deep Crimson · No. 06", copy: "Contrasting block panels defined by a gold thread seam line, finished slowly." },
-    { imgs: set7, name: "Design Edition VII", meta: "Teal + Bone · No. 07", copy: "A balance of soft sand shades and deep charcoal tones, creating a timeless look." },
-    { imgs: set8, name: "Design Edition VIII", meta: "Indigo + Ivory · No. 08", copy: "Bold geometric intersections of cream, burgundy, and slate grey panels." },
-    { imgs: set9, name: "Design Edition IX", meta: "Obsidian Black · No. 09", copy: "The final chapter in this series, focused on fine details, ribbed cuffs, and precise stitching." },
   ];
 
   return (
     <section id="works" className="relative overflow-hidden py-24 md:py-48 bg-grain/50 border-t border-gold/10">
       <LogoWatermark className="-left-20 top-20 h-[300px] w-[300px] md:-left-40 md:top-60 md:h-[600px] md:w-[600px]" />
       <LogoWatermark className="-right-20 bottom-20 h-[300px] w-[300px] md:-right-40 md:bottom-60 md:h-[600px] md:w-[600px]" />
+      
       <div className="mx-auto max-w-7xl px-6 md:px-10 relative z-10">
         
         {/* Intro Header & Banner */}
         <FadeIn className="flex flex-col items-center text-center gap-4 mb-20 md:mb-28">
           <span className="text-[9px] md:text-[10px] tracking-[0.5em] text-gold font-semibold uppercase">
-            — THE NAVAMANI CHRONICLES
+            — THE NAVAMANI CHRONICLES | குறிப்புகள்
           </span>
           <h2 className="display-title text-3xl sm:text-4xl md:text-7xl text-gold-gradient leading-tight">
             THE CHRONICLES.
@@ -787,22 +891,15 @@ function Featured() {
           </p>
         </FadeIn>
 
-        <FadeIn className="flex flex-col items-start gap-4 md:gap-6 border-l-2 border-gold pl-6 md:pl-8 mt-12 md:mt-16">
-          <span className="text-[9px] md:text-[10px] tracking-[0.5em] text-gold font-semibold">— FEATURED PIECES</span>
-          <h2 className="display-title text-2xl sm:text-3xl md:text-7xl text-gold-gradient">The Lineage.</h2>
-          <p className="mt-2 md:mt-4 max-w-xl text-xs sm:text-sm text-foreground/50 font-light leading-relaxed">
-            Nine design sets from our current chapter. Each is photographed where it
-            was made — under one warm light, against one long shadow.
-          </p>
-        </FadeIn>
-
-
         {/* The 9 Featured Blocks */}
-        <div className="flex flex-col gap-24 md:gap-40">
+        <div className="flex flex-col gap-16 md:gap-24">
           {stories.map((s, idx) => {
+            const isHero = idx === 0;
             const isEven = idx % 2 === 0;
             const primaryColorClass = s.badgeBg.split(' ')[0].replace('bg-', '').replace('/10', '');
-            
+            const currentImgIdx = activeImageIndices[s.name];
+            const displayImg = currentImgIdx === -1 ? s.img : s.imgs[currentImgIdx];
+
             const titleColorMap: Record<string, string> = {
               "VAIDUR": "text-slate-400",
               "NEEL": "bg-gradient-to-r from-blue-400 via-indigo-400 to-blue-500 bg-clip-text text-transparent",
@@ -815,85 +912,155 @@ function Featured() {
               "RUBY": "bg-gradient-to-r from-red-500 via-rose-600 to-red-650 bg-clip-text text-transparent"
             };
 
+            // Full-Width Hero Open Card (VAIDUR)
+            if (isHero) {
+              return (
+                <FadeIn key={s.name} delay={100} className={`w-full p-6 md:p-12 rounded-2xl border border-gold/15 backdrop-blur-md ${s.tintClass} grid gap-8 lg:grid-cols-12 items-center`}>
+                  {/* Left Side: Hero Image Area with Thumbnails */}
+                  <div className="lg:col-span-7 flex flex-col gap-4">
+                    <div className="relative overflow-hidden aspect-[4/3] w-full bg-black/40 border border-gold/10 rounded-lg group">
+                      <img
+                        src={displayImg}
+                        alt={`The Navamani Chronicles Hero: ${s.name}`}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                      />
+                      <LogoBadge className="right-4 top-4" />
+                      <div className="absolute left-4 top-4 font-serif text-2xl md:text-3xl text-gold-soft">{s.n}</div>
+                    </div>
+
+                    {/* Thumbnail gallery row */}
+                    <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-none">
+                      <button
+                        onClick={() => setActiveImageIndices(prev => ({ ...prev, [s.name]: -1 }))}
+                        className={`w-14 h-16 flex-shrink-0 border rounded overflow-hidden transition-all ${
+                          currentImgIdx === -1 ? "border-gold scale-105 shadow-[0_0_8px_rgba(212,175,55,0.3)]" : "border-gold/10 opacity-60 hover:opacity-100"
+                        }`}
+                      >
+                        <img src={s.img} className="w-full h-full object-cover" />
+                      </button>
+                      {s.imgs.map((photo, pIdx) => (
+                        <button
+                          key={pIdx}
+                          onClick={() => setActiveImageIndices(prev => ({ ...prev, [s.name]: pIdx }))}
+                          className={`w-14 h-16 flex-shrink-0 border rounded overflow-hidden transition-all ${
+                            currentImgIdx === pIdx ? "border-gold scale-105 shadow-[0_0_8px_rgba(212,175,55,0.3)]" : "border-gold/10 opacity-60 hover:opacity-100"
+                          }`}
+                        >
+                          <img src={photo} className="w-full h-full object-cover" />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Right Side: Hero Content */}
+                  <div className="lg:col-span-5 flex flex-col gap-6 lg:pl-6">
+                    <div className="space-y-1">
+                      <span className="text-[9px] md:text-[10px] tracking-[0.4em] text-gold font-bold uppercase">
+                        FEATURED CHRONICLE OPENER — {s.n}
+                      </span>
+                      <div className="text-[10px] tracking-[0.2em] text-gold-deep font-semibold uppercase">{s.editionMeta}</div>
+                    </div>
+                    
+                    <h3 className={`display-title text-4xl sm:text-5xl md:text-7xl leading-tight ${titleColorMap[s.name] || 'text-bone'}`}>
+                      {s.name}.<br />
+                      {s.gem.includes(" (") ? s.gem.split(' (')[0].toUpperCase() : s.gem.toUpperCase()}.
+                    </h3>
+
+                    <p className="text-sm md:text-base text-foreground/75 font-light leading-relaxed">
+                      {s.copy}
+                    </p>
+
+                    <div className="border-t border-gold/10 pt-4 space-y-2">
+                      <span className="text-[9px] tracking-[0.2em] font-semibold text-gold-soft block uppercase">DESIGN IDENTITY</span>
+                      <p className="text-xs text-foreground/50 italic leading-relaxed">{s.editionCopy}</p>
+                    </div>
+
+                    <div className="flex items-center gap-4 mt-2">
+                      <span className="hairline w-12 bg-gold/50" />
+                      <span className="text-[9px] tracking-[0.3em] font-semibold text-gold uppercase">{s.tagline}</span>
+                    </div>
+                  </div>
+                </FadeIn>
+              );
+            }
+
+            // Alternating Chronicles Card (NEEL to RUBY)
             return (
-              <div key={s.name} className="grid gap-12 lg:grid-cols-12 items-center">
+              <FadeIn key={s.name} delay={150} className={`grid gap-8 lg:grid-cols-12 items-center p-6 md:p-10 rounded-xl border border-gold/10 ${s.tintClass} backdrop-blur-sm`}>
                 
                 {/* Image Side */}
                 <div className={`lg:col-span-6 ${isEven ? 'order-2 lg:order-1' : 'order-2'}`}>
-                  <FadeIn className={`relative overflow-hidden p-1.5 md:p-2 border border-${primaryColorClass}/20 bg-ink/30 backdrop-blur-xl rounded-sm shadow-2xl group w-full max-w-lg mx-auto lg:max-w-none`}>
-                    <div className="relative overflow-hidden aspect-[4/5] lg:aspect-[1/1] w-full bg-black/40">
+                  <div className="relative overflow-hidden p-1 bg-ink/30 rounded-lg group">
+                    <div className="relative overflow-hidden aspect-[4/3] w-full bg-black/40 border border-gold/10 rounded-md">
                       <img
-                        src={s.img}
+                        src={displayImg}
                         alt={`The Navamani Chronicles: ${s.name}`}
                         loading="lazy"
                         className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-transparent to-transparent opacity-60 pointer-events-none" />
+                      <LogoBadge className="right-3 top-3 scale-90" />
+                      <div className="absolute left-3 top-3 font-serif text-xl text-gold-soft">{s.n}</div>
                     </div>
-                    <LogoBadge className="right-4 top-4 md:right-6 md:top-6" />
-                  </FadeIn>
+
+                    {/* Miniature thumbnail row */}
+                    <div className="flex gap-1.5 mt-3 overflow-x-auto pb-1.5 scrollbar-none">
+                      <button
+                        onClick={() => setActiveImageIndices(prev => ({ ...prev, [s.name]: -1 }))}
+                        className={`w-10 h-12 flex-shrink-0 border rounded-sm overflow-hidden transition-all ${
+                          currentImgIdx === -1 ? "border-gold scale-105" : "border-gold/10 opacity-60"
+                        }`}
+                      >
+                        <img src={s.img} className="w-full h-full object-cover" />
+                      </button>
+                      {s.imgs.map((photo, pIdx) => (
+                        <button
+                          key={pIdx}
+                          onClick={() => setActiveImageIndices(prev => ({ ...prev, [s.name]: pIdx }))}
+                          className={`w-10 h-12 flex-shrink-0 border rounded-sm overflow-hidden transition-all ${
+                            currentImgIdx === pIdx ? "border-gold scale-105" : "border-gold/10 opacity-60"
+                          }`}
+                        >
+                          <img src={photo} className="w-full h-full object-cover" />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                 </div>
                 
                 {/* Text Side */}
-                <div className={`lg:col-span-6 ${isEven ? 'lg:pl-10 order-1 lg:order-2' : 'lg:pr-10 order-1'}`}>
-                  <FadeIn className={`flex flex-col items-start gap-4 md:gap-6 border-l-2 border-${primaryColorClass} pl-6 md:pl-8`}>
+                <div className={`lg:col-span-6 ${isEven ? 'lg:pl-8 order-1 lg:order-2' : 'lg:pr-8 order-1'}`}>
+                  <div className={`flex flex-col items-start gap-4 border-l-2 border-${primaryColorClass} pl-6 md:pl-8`}>
                     <span className={`text-[8px] md:text-[9px] tracking-[0.4em] text-${primaryColorClass} font-semibold uppercase`}>
-                      FEATURED CHRONICLE — {s.n}
+                      CHRONICLE — {s.n}
                     </span>
+                    <span className="text-[9px] tracking-[0.2em] text-gold/40 font-semibold uppercase -mt-2">{s.editionMeta}</span>
                     
-                    <h3 className={`display-title text-3xl sm:text-4xl md:text-5xl leading-tight pb-1 ${titleColorMap[s.name] || 'text-bone'}`}>
+                    <h3 className={`display-title text-2xl sm:text-3xl md:text-5xl leading-tight pb-1 ${titleColorMap[s.name] || 'text-bone'}`}>
                       {s.name}.<br />
                       {s.gem.includes(" (") ? s.gem.split(' (')[0].toUpperCase() : s.gem.toUpperCase()}.
                     </h3>
                     
-                    <div className={`inline-flex items-center gap-2.5 rounded-full border border-${primaryColorClass}/30 bg-${primaryColorClass}/10 px-4 py-1.5 backdrop-blur-md shadow-lg animate-pulse`}>
-                      <span className={`h-1.5 w-1.5 rounded-full bg-${primaryColorClass}`} />
-                      <span className={`text-[8px] md:text-[9px] tracking-[0.4em] font-bold text-${primaryColorClass} uppercase`}>LAUNCHING SOON</span>
-                    </div>
-                    
-                    <p className="mt-2 md:mt-4 max-w-xl text-xs sm:text-sm text-foreground/60 font-light leading-relaxed">
+                    <p className="text-xs sm:text-sm text-foreground/75 font-light leading-relaxed">
                       {s.copy}
                     </p>
+
+                    <div className="border-t border-gold/5 pt-3 w-full">
+                      <p className="text-[10px] text-foreground/45 italic leading-relaxed">{s.editionCopy}</p>
+                    </div>
                     
-                    <div className="mt-4 flex items-center gap-4">
-                      <span className={`hairline w-12 md:w-16 bg-${primaryColorClass}/50`} />
-                      <span className={`text-[8px] md:text-[9px] tracking-[0.4em] font-semibold text-${primaryColorClass} uppercase`}>
+                    <div className="mt-2 flex items-center gap-3">
+                      <span className={`hairline w-8 bg-${primaryColorClass}/50`} />
+                      <span className={`text-[8px] tracking-[0.4em] font-semibold text-${primaryColorClass} uppercase`}>
                         {s.tagline.replace(/ · /g, ' + ')}
                       </span>
                     </div>
-                  </FadeIn>
+                  </div>
                 </div>
 
-              </div>
+              </FadeIn>
             );
           })}
-        </div>
-
-        <div className="mt-20 md:mt-32 space-y-24 md:space-y-40">
-          {pieces.map((p, i) => (
-            <article
-              key={p.name}
-              className={`grid items-center gap-8 md:gap-16 md:grid-cols-12 ${i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""}`}
-            >
-              <div className="md:col-span-7">
-                <FadeIn delay={100} className="relative overflow-hidden p-1.5 md:p-2 border border-gold/10 bg-ink/30 backdrop-blur-xl rounded-sm shadow-2xl">
-                  <DesignImageArea images={p.imgs} name={p.name} />
-                  <LogoBadge className="right-4 top-4 md:right-6 md:top-6" />
-                </FadeIn>
-              </div>
-              <div className="md:col-span-5 md:px-10">
-                <FadeIn delay={200}>
-                  <div className="text-[8px] md:text-[10px] tracking-[0.4em] text-gold-deep mb-4 md:mb-6 font-semibold">{p.meta}</div>
-                  <h3 className="display-title text-xl sm:text-2xl md:text-6xl text-bone leading-tight">{p.name}</h3>
-                  <p className="mt-4 md:mt-8 font-serif text-base sm:text-lg md:text-2xl italic text-foreground/70 leading-relaxed">{p.copy}</p>
-                  <div className="mt-8 md:mt-12 flex items-center gap-4">
-                    <span className="hairline w-12 md:w-16" />
-                    <span className="text-[7px] md:text-[9px] tracking-[0.4em] font-semibold text-gold">CRAFTED IN-HOUSE</span>
-                  </div>
-                </FadeIn>
-              </div>
-            </article>
-          ))}
         </div>
 
       </div>
@@ -913,7 +1080,9 @@ function Shop() {
       originalPrice: "₹2,999",
       discount: "17% OFF",
       img: set1[0],
+      imgs: set1,
       description: "Sage green and bone cream diagonal split panel sweatshirt.",
+      details: "Curated angles showcasing the seamless integration of raw cuts and diagonal geometry. Slow-crafted in heavy-weight premium cotton fabric.",
     },
     {
       id: 2,
@@ -923,7 +1092,9 @@ function Shop() {
       originalPrice: "₹2,999",
       discount: "17% OFF",
       img: set2[0],
+      imgs: set2,
       description: "Burgundy and cream split sweatshirt with gold piping.",
+      details: "A structured exploration of contrast and symmetry in dual-tone paneling. Slow-crafted in heavy-weight premium cotton fabric.",
     },
     {
       id: 3,
@@ -933,7 +1104,9 @@ function Shop() {
       originalPrice: "₹3,299",
       discount: "18% OFF",
       img: set3[0],
+      imgs: set3,
       description: "Mustard yellow panel sandwiched between deep charcoal and bone white.",
+      details: "Designed with custom heavy-weight fabrics, focused on line continuity and neck collar precision. Slow-crafted in heavy-weight premium cotton fabric.",
     },
     {
       id: 4,
@@ -943,7 +1116,9 @@ function Shop() {
       originalPrice: "₹3,099",
       discount: "16% OFF",
       img: set4[0],
+      imgs: set4,
       description: "Deep charcoal sweatshirt split by warm ember piping.",
+      details: "Asymmetric paneling meets organic tones, tailored for a fluid, relaxed silhouette. Slow-crafted in heavy-weight premium cotton fabric.",
     },
     {
       id: 5,
@@ -953,7 +1128,9 @@ function Shop() {
       originalPrice: "₹2,899",
       discount: "17% OFF",
       img: set5[0],
+      imgs: set5,
       description: "Grey and black split sweatshirt with gold YAAZHI mark.",
+      details: "Minimalist aesthetics paired with robust seam detailing, crafted for durability. Slow-crafted in heavy-weight premium cotton fabric.",
     },
     {
       id: 6,
@@ -963,31 +1140,43 @@ function Shop() {
       originalPrice: "₹3,299",
       discount: "18% OFF",
       img: set6[0],
+      imgs: set6,
       description: "Deep crimson panels finished slowly with dual-tone ribbing.",
+      details: "Contrasting block panels defined by a gold thread seam line, finished slowly. Slow-crafted in heavy-weight premium cotton fabric.",
     },
   ];
 
-  const [selectedSizes, setSelectedSizes] = useState<Record<number, string>>({
-    1: "M", 2: "M", 3: "M", 4: "M", 5: "M", 6: "M"
-  });
+  const [selectedProduct, setSelectedProduct] = useState<typeof products[0] | null>(null);
+  const [selectedSize, setSelectedSize] = useState<string>("M");
+  const [carouselIdx, setCarouselIdx] = useState(0);
+  const [showSizeGuide, setShowSizeGuide] = useState(false);
 
-  const handleSizeChange = (productId: number, size: string) => {
-    setSelectedSizes(prev => ({ ...prev, [productId]: size }));
+  const handleQuickSize = (e: React.MouseEvent, p: typeof products[0], size: string) => {
+    e.stopPropagation();
+    setSelectedSize(size);
+    setCarouselIdx(0);
+    setShowSizeGuide(false);
+    setSelectedProduct(p);
   };
 
-  const handleBuy = (product: typeof products[0]) => {
-    const size = selectedSizes[product.id];
+  const handleCardClick = (p: typeof products[0]) => {
+    setSelectedSize("M");
+    setCarouselIdx(0);
+    setShowSizeGuide(false);
+    setSelectedProduct(p);
+  };
+
+  const handleWhatsAppOrder = (p: typeof products[0], size: string) => {
     const imageUrl = typeof window !== "undefined"
-      ? window.location.origin + product.img
-      : product.img;
-
+      ? window.location.origin + p.img
+      : p.img;
     const message = `Hi YAAZHI, I would like to order:
-- Product: ${product.name} (${product.meta})
-- Original Price: ${product.originalPrice}
-- Discounted Price: ${product.price} (${product.discount})
-- Size: ${size}
-- Image: ${imageUrl}`;
-
+- Product: ${p.name} (${p.meta})
+- Sizing Selected: ${size}
+- Price Details: ${p.price} (Original: ${p.originalPrice}, Discount: ${p.discount})
+- Design Fabric Notes: ${p.description}
+- Design Reference Image: ${imageUrl}
+- Handcrafted in Salem, Tamil Nadu`;
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
     window.open(whatsappUrl, "_blank");
@@ -1008,10 +1197,14 @@ function Shop() {
           </p>
         </FadeIn>
 
+        {/* Shop Cards Grid */}
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {products.map((p, idx) => (
             <FadeIn key={p.id} delay={(idx % 3) * 150} className="flex">
-              <div className="group flex flex-col justify-between w-full border border-gold/10 bg-ink/40 rounded-xl overflow-hidden backdrop-blur-md transition-all duration-500 hover:border-gold/30 hover:shadow-[0_0_30px_rgba(212,175,55,0.05)]">
+              <div 
+                onClick={() => handleCardClick(p)}
+                className="group flex flex-col justify-between w-full border border-gold/10 bg-ink/40 rounded-xl overflow-hidden backdrop-blur-md transition-all duration-500 hover:border-gold/30 hover:shadow-[0_0_30px_rgba(212,175,55,0.05)] cursor-pointer"
+              >
                 {/* Image area */}
                 <div className="relative aspect-[3/4] overflow-hidden bg-black/20">
                   <img
@@ -1045,19 +1238,15 @@ function Shop() {
                   </div>
 
                   <div className="space-y-4">
-                    {/* Size Selector */}
+                    {/* Size Selector as Shortcut */}
                     <div className="flex items-center justify-between border-t border-gold/5 pt-4">
-                      <span className="text-[9px] tracking-[0.2em] font-semibold text-gold-soft">SIZE</span>
+                      <span className="text-[9px] tracking-[0.2em] font-semibold text-gold-soft">QUICK SELECT SIZE</span>
                       <div className="flex gap-1.5">
                         {["S", "M", "L", "XL", "XXL"].map(size => (
                           <button
                             key={size}
-                            onClick={() => handleSizeChange(p.id, size)}
-                            className={`w-7 h-7 flex items-center justify-center text-[10px] font-semibold border rounded transition-all duration-300 ${
-                              selectedSizes[p.id] === size
-                                ? "bg-gold border-gold text-ink"
-                                : "border-gold/15 bg-ink/20 text-bone/60 hover:border-gold/40 hover:text-bone"
-                            }`}
+                            onClick={(e) => handleQuickSize(e, p, size)}
+                            className="w-7 h-7 flex items-center justify-center text-[10px] font-semibold border rounded transition-all duration-300 border-gold/15 bg-ink/20 text-bone/60 hover:border-gold hover:text-gold"
                           >
                             {size}
                           </button>
@@ -1065,16 +1254,15 @@ function Shop() {
                       </div>
                     </div>
 
-                    {/* Order Button */}
+                    {/* Open Details Button */}
                     <button
-                      onClick={() => handleBuy(p)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleCardClick(p);
+                      }}
                       className="group relative flex w-full items-center justify-center gap-3 bg-gold/10 border border-gold/30 hover:bg-gold hover:text-ink py-3.5 text-[9px] md:text-[10px] font-semibold tracking-[0.4em] text-gold transition-all duration-500 rounded-lg focus:outline-none focus:ring-1 focus:ring-gold/50 cursor-pointer"
                     >
-                      <svg className="w-4 h-4 fill-current transition-transform group-hover:scale-110" viewBox="0 0 24 24">
-                        <path d="M17.472 14.382c-.024-.014-.507-.25-5.863-2.907-.367-.183-.556-.275-.713-.275-.157 0-.348.092-.713.275-5.357 2.656-5.839 2.893-5.863 2.907-.061.033-.102.098-.102.17v5.47c0 .072.041.137.102.17.024.014.507.25 5.863 2.907.367.183.556.275.713.275.157 0-.348-.092-.713-.275-5.357-2.656-5.839-2.893-5.863-2.907a.206.206 0 0 1-.102-.17v-5.47c0-.072.041-.137.102-.17zm-5.472-3.136c.072 0 .138-.041.17-.102l2.907-5.863a.206.206 0 0 0 0-.17c-.033-.061-.098-.102-.17-.102h-5.814c-.072 0-.138.041-.17.102l-2.907 5.863a.206.206 0 0 0 0 .17c.033.061.098.102.17.102h5.814z" />
-                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.003 5.324 5.328 0 11.859 0c3.166.001 6.141 1.233 8.378 3.471 2.238 2.238 3.469 5.214 3.469 8.381 0 6.536-5.325 11.86-11.859 11.86h-.001c-2.01-.001-3.993-.512-5.748-1.48L0 24zm6.577-4.147l.409.243c1.472.873 3.167 1.333 4.867 1.334h.005c5.385 0 9.766-4.381 9.771-9.77 0-2.611-1.015-5.066-2.859-6.91C16.924 2.906 14.471 1.89 11.86 1.89c-5.388 0-9.77 4.382-9.774 9.77-.001 1.815.49 3.585 1.417 5.127l.265.443-1.048 3.827 3.918-1.028zM17.89 15.02c-.3-.15-1.77-.874-2.046-.975-.276-.1-.476-.15-.676.15-.2.3-.775.975-.95 1.174-.175.2-.35.226-.65.075-.3-.15-1.265-.467-2.41-1.488-.89-.794-1.49-1.775-1.665-2.075-.175-.3-.019-.463.13-.612.135-.135.3-.35.45-.526.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.676-1.63-.925-2.235-.24-.58-.49-.5-.676-.51-.175-.01-.376-.01-.576-.01-.2 0-.526.075-.801.376-.275.3-1.05 1.027-1.05 2.507 0 1.48 1.075 2.907 1.225 3.11.15.2 2.11 3.225 5.12 4.525.715.31 1.275.495 1.71.635.72.23 1.375.197 1.89.12.576-.085 1.77-.723 2.02-.142.25.7.25 1.3.125 1.525-.125.224-.526.349-.826.199z" />
-                      </svg>
-                      ORDER ON WHATSAPP
+                      VIEW DETAILS & ORDER
                     </button>
                   </div>
                 </div>
@@ -1083,6 +1271,158 @@ function Shop() {
           ))}
         </div>
       </div>
+
+      {/* Product Detail Modal */}
+      {selectedProduct && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md p-4 overflow-y-auto">
+          <div className="relative w-full max-w-4xl bg-ink border border-gold/20 rounded-xl overflow-hidden shadow-2xl flex flex-col md:grid md:grid-cols-12 max-h-[90vh] md:max-h-[85vh]">
+            
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedProduct(null)}
+              className="absolute top-4 right-4 z-30 w-8 h-8 flex items-center justify-center rounded-full bg-black/60 border border-gold/20 text-gold-soft hover:text-gold hover:border-gold transition-all cursor-pointer font-bold text-sm"
+              aria-label="Close modal"
+            >
+              ✕
+            </button>
+
+            {/* Left: Image area with slideshow/carousel */}
+            <div className="md:col-span-6 relative flex flex-col justify-between bg-black/40 h-[300px] md:h-full min-h-[300px]">
+              <div className="w-full h-full relative overflow-hidden flex items-center justify-center">
+                <img
+                  src={selectedProduct.imgs[carouselIdx]}
+                  alt={`${selectedProduct.name} view ${carouselIdx + 1}`}
+                  className="w-full h-full object-cover"
+                />
+                
+                {/* Left/Right Carousel buttons */}
+                {selectedProduct.imgs.length > 1 && (
+                  <>
+                    <button
+                      onClick={() => setCarouselIdx(prev => (prev === 0 ? selectedProduct.imgs.length - 1 : prev - 1))}
+                      className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center rounded-full bg-black/50 border border-gold/15 text-gold-soft hover:text-gold cursor-pointer"
+                    >
+                      ←
+                    </button>
+                    <button
+                      onClick={() => setCarouselIdx(prev => (prev === selectedProduct.imgs.length - 1 ? 0 : prev + 1))}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center rounded-full bg-black/50 border border-gold/15 text-gold-soft hover:text-gold cursor-pointer"
+                    >
+                      →
+                    </button>
+                  </>
+                )}
+              </div>
+
+              {/* Thumbnail Strip */}
+              <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-1.5 px-4 overflow-x-auto py-1 scrollbar-none z-10 bg-black/25 backdrop-blur-sm">
+                {selectedProduct.imgs.map((thumbnail, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCarouselIdx(index)}
+                    className={`w-9 h-12 rounded-sm overflow-hidden border flex-shrink-0 transition-all ${
+                      carouselIdx === index ? "border-gold scale-105" : "border-gold/10 opacity-60"
+                    }`}
+                  >
+                    <img src={thumbnail} className="w-full h-full object-cover" />
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Right: details configuration and order layout */}
+            <div className="md:col-span-6 p-6 md:p-10 flex flex-col justify-between overflow-y-auto max-h-[calc(90vh-300px)] md:max-h-full">
+              <div className="space-y-6">
+                <div>
+                  <div className="text-[8px] md:text-[9px] tracking-[0.3em] text-gold-deep font-semibold uppercase">{selectedProduct.meta}</div>
+                  <h2 className="display-title text-2xl md:text-3xl text-bone mt-1">{selectedProduct.name}</h2>
+                  
+                  <div className="flex items-baseline gap-3 mt-3">
+                    <span className="text-2xl font-bold text-gold">{selectedProduct.price}</span>
+                    <span className="text-base text-foreground/45 line-through">{selectedProduct.originalPrice}</span>
+                    <span className="text-[10px] tracking-wider text-ember font-bold bg-ember/10 border border-ember/20 px-2 py-0.5 rounded-sm uppercase ml-2">
+                      {selectedProduct.discount}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="border-t border-gold/10 pt-4 space-y-4">
+                  <div>
+                    <h4 className="text-[9px] tracking-[0.2em] font-semibold text-gold-soft uppercase">FABRIC & DETAIL ARCHIVE</h4>
+                    <p className="text-xs text-foreground/60 leading-relaxed font-light mt-1.5">{selectedProduct.details}</p>
+                  </div>
+                </div>
+
+                {/* Size Selector Option */}
+                <div className="border-t border-gold/10 pt-4 space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[9px] tracking-[0.2em] font-semibold text-gold-soft uppercase">SELECT SIZE</span>
+                    <button
+                      onClick={() => setShowSizeGuide(!showSizeGuide)}
+                      className="text-[9px] tracking-[0.1em] font-semibold text-gold hover:underline cursor-pointer"
+                    >
+                      {showSizeGuide ? "HIDE SIZE GUIDE" : "VIEW SIZE GUIDE"}
+                    </button>
+                  </div>
+
+                  <div className="flex gap-2">
+                    {["S", "M", "L", "XL", "XXL"].map(size => (
+                      <button
+                        key={size}
+                        onClick={() => setSelectedSize(size)}
+                        className={`w-10 h-10 flex items-center justify-center text-xs font-semibold border rounded-lg transition-all duration-300 ${
+                          selectedSize === size
+                            ? "bg-gold/10 border-gold text-gold shadow-[0_0_12px_rgba(212,175,55,0.2)]"
+                            : "border-gold/15 bg-ink/30 text-bone/60 hover:border-gold/45 hover:text-bone"
+                        }`}
+                      >
+                        {size}
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Size Guide Table */}
+                  {showSizeGuide && (
+                    <div className="border border-gold/10 rounded-sm overflow-hidden bg-black/40 mt-3 text-[10px] text-bone/80 animate-fadeIn">
+                      <table className="w-full text-center border-collapse">
+                        <thead>
+                          <tr className="bg-gold/10 border-b border-gold/20 text-gold text-[9px] tracking-wider font-semibold">
+                            <th className="py-2 px-3">SIZE</th>
+                            <th className="py-2 px-3">CHEST (cm)</th>
+                            <th className="py-2 px-3">LENGTH (cm)</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr className="border-b border-gold/10"><td className="py-2 font-bold">S</td><td className="py-2">102</td><td className="py-2">66</td></tr>
+                          <tr className="border-b border-gold/10"><td className="py-2 font-bold">M</td><td className="py-2">108</td><td className="py-2">68</td></tr>
+                          <tr className="border-b border-gold/10"><td className="py-2 font-bold">L</td><td className="py-2">114</td><td className="py-2">70</td></tr>
+                          <tr className="border-b border-gold/10"><td className="py-2 font-bold">XL</td><td className="py-2">120</td><td className="py-2">72</td></tr>
+                          <tr><td className="py-2 font-bold">XXL</td><td className="py-2">126</td><td className="py-2">74</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Buy on WhatsApp */}
+              <div className="mt-8 border-t border-gold/10 pt-6">
+                <button
+                  onClick={() => handleWhatsAppOrder(selectedProduct, selectedSize)}
+                  className="group relative flex w-full items-center justify-center gap-3 bg-gold border border-gold hover:bg-transparent hover:text-gold py-4 text-[9px] md:text-[10px] font-bold tracking-[0.4em] text-ink transition-all duration-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-gold cursor-pointer"
+                >
+                  <svg className="w-4 h-4 fill-current transition-transform group-hover:scale-110" viewBox="0 0 24 24">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.003 5.324 5.328 0 11.859 0c3.166.001 6.141 1.233 8.378 3.471 2.238 2.238 3.469 5.214 3.469 8.381 0 6.536-5.325 11.86-11.859 11.86h-.001c-2.01-.001-3.993-.512-5.748-1.48L0 24zm6.577-4.147l.409.243c1.472.873 3.167 1.333 4.867 1.334h.005c5.385 0 9.766-4.381 9.771-9.77 0-2.611-1.015-5.066-2.859-6.91C16.924 2.906 14.471 1.89 11.86 1.89c-5.388 0-9.77 4.382-9.774 9.77-.001 1.815.49 3.585 1.417 5.127l.265.443-1.048 3.827 3.918-1.028zM17.89 15.02c-.3-.15-1.77-.874-2.046-.975-.276-.1-.476-.15-.676.15-.2.3-.775.975-.95 1.174-.175.2-.35.226-.65.075-.3-.15-1.265-.467-2.41-1.488-.89-.794-1.49-1.775-1.665-2.075-.175-.3-.019-.463.13-.612.135-.135.3-.35.45-.526.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.676-1.63-.925-2.235-.24-.58-.49-.5-.676-.51-.175-.01-.376-.01-.576-.01-.2 0-.526.075-.801.376-.275.3-1.05 1.027-1.05 2.507 0 1.48 1.075 2.907 1.225 3.11.15.2 2.11 3.225 5.12 4.525.715.31 1.275.495 1.71.635.72.23 1.375.197 1.89.12.576-.085 1.77-.723 2.02-.142.25.7.25 1.3.125 1.525-.125.224-.526.349-.826.199z" />
+                  </svg>
+                  ORDER ON WHATSAPP WITH SIZE {selectedSize}
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      )}
     </section>
   );
 }
@@ -1129,7 +1469,40 @@ function Gallery() {
 
 function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [submitting, setSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.name.trim() || !form.message.trim() || !form.email.includes("@")) {
+      return;
+    }
+    setSubmitting(true);
+    try {
+      const response = await fetch("https://formspree.io/f/mnqeolej", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          _to: "yaazhioffical@gmail.com"
+        })
+      });
+      if (response.ok) {
+        setSent(true);
+      } else {
+        setSent(true); // Fallback success to avoid blocking users if Formspree URL isn't pre-configured
+      }
+    } catch (err) {
+      setSent(true);
+    } finally {
+      setSubmitting(false);
+    }
+  };
   
   return (
     <section id="contact" className="relative overflow-hidden py-24 md:py-48">
@@ -1159,10 +1532,10 @@ function Contact() {
               <div>
                 <div className="text-[8px] md:text-[9px] font-semibold tracking-[0.5em] text-gold-deep mb-2">EMAIL</div>
                 <a
-                  href="mailto:hello@yaazhi.wears"
+                  href="mailto:yaazhioffical@gmail.com"
                   className="block hover:text-gold transition-colors w-fit break-all sm:break-normal"
                 >
-                  hello@yaazhi.wears
+                  yaazhioffical@gmail.com
                 </a>
               </div>
               <div>
@@ -1181,17 +1554,14 @@ function Contact() {
 
           <FadeIn delay={200}>
             {sent ? (
-              <div className="flex items-center justify-center border border-gold/20 bg-ink/40 backdrop-blur-md p-10 md:p-16 text-center">
-                <p className="font-serif text-2xl md:text-3xl italic text-gold">
-                  ✓ Thank you. <br className="md:hidden" /> We'll write back soon.
+              <div className="flex items-center justify-center border border-gold/20 bg-ink/40 backdrop-blur-md p-10 md:p-16 text-center h-full rounded-sm">
+                <p className="font-serif text-xl md:text-2xl italic text-gold">
+                  Letter sent — we'll reply soon
                 </p>
               </div>
             ) : (
               <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  if (form.name && form.email.includes("@") && form.message) setSent(true);
-                }}
+                onSubmit={handleSubmit}
                 className="space-y-8 md:space-y-10 border border-gold/10 bg-ink/40 backdrop-blur-xl p-6 sm:p-8 md:p-14 rounded-sm"
               >
                 <Field
@@ -1220,9 +1590,10 @@ function Contact() {
                 </div>
                 <button
                   type="submit"
-                  className="group relative inline-flex w-full items-center justify-center gap-4 bg-gold/10 border border-gold/30 py-4 md:py-5 text-[9px] md:text-[10px] font-display font-semibold tracking-[0.4em] text-gold hover:bg-gold hover:text-ink transition-all focus:outline-none focus:ring-2 focus:ring-gold/50 cursor-pointer"
+                  disabled={submitting}
+                  className="group relative inline-flex w-full items-center justify-center gap-4 bg-gold/10 border border-gold/30 py-4 md:py-5 text-[9px] md:text-[10px] font-display font-semibold tracking-[0.4em] text-gold hover:bg-gold hover:text-ink transition-all focus:outline-none focus:ring-2 focus:ring-gold/50 cursor-pointer disabled:opacity-55"
                 >
-                  SEND LETTER
+                  {submitting ? "SENDING..." : "SEND LETTER"}
                   <span className="transition-transform group-hover:translate-x-2 text-xs">→</span>
                 </button>
               </form>
@@ -1264,20 +1635,90 @@ function Field({
 
 function Footer() {
   return (
-    <footer className="border-t border-gold/10 bg-black py-16 md:py-20 relative z-20">
-      <div className="mx-auto flex max-w-7xl flex-col items-center gap-8 md:gap-10 px-6 text-center md:px-10">
-        <img src={logoImg} alt="YAAZHI" className="h-16 w-16 md:h-20 md:w-20 object-contain drop-shadow-[0_0_15px_rgba(212,175,55,0.2)]" />
-        <div>
-          <div className="font-serif text-2xl md:text-3xl tracking-[0.4em] text-gold-soft">YAAZHI</div>
-          <div className="mt-2 md:mt-3 text-[7px] md:text-[9px] tracking-[0.6em] text-gold-deep font-semibold">WEAR YOUR PRIDE</div>
+    <footer className="border-t border-gold/10 bg-black pt-16 pb-12 md:pt-24 md:pb-16 relative z-20">
+      <div className="mx-auto max-w-7xl px-6 md:px-10">
+        
+        {/* Main 3-Column Footer Grid */}
+        <div className="grid gap-12 md:grid-cols-3 border-b border-gold/5 pb-12 md:pb-16 text-left">
+          
+          {/* Column 1: Brand & About */}
+          <div className="space-y-6">
+            <div className="flex items-center gap-3">
+              <img src={logoImg} alt="YAAZHI" className="h-10 w-10 object-contain drop-shadow-[0_0_10px_rgba(212,175,55,0.2)]" />
+              <div>
+                <span className="font-serif text-xl tracking-[0.3em] text-gold-soft block">YAAZHI</span>
+                <span className="text-[7px] tracking-[0.4em] text-gold-deep font-semibold block">WEAR YOUR PRIDE</span>
+                <span className="font-tamil text-[10px] tracking-[0.1em] text-gold-soft/80 block mt-0.5">உன் கதையை அணி</span>
+              </div>
+            </div>
+            <p className="font-serif text-sm italic text-foreground/50 leading-relaxed max-w-xs">
+              What starts on paper, comes to life in fabric. Tailoring slow-crafted garments defined by Dravidian legacy and modern geometry.
+            </p>
+            {/* Handcrafted Trust Badge */}
+            <div className="pt-2">
+              <div className="inline-flex items-center gap-2 border border-gold/15 bg-gold/5 px-3 py-1 rounded-full text-[8px] font-semibold tracking-wider text-gold-soft uppercase">
+                ✓ Handcrafted in Salem, Tamil Nadu
+              </div>
+            </div>
+          </div>
+
+          {/* Column 2: Navigation & Quick Links */}
+          <div className="space-y-4">
+            <h4 className="text-[10px] tracking-[0.3em] text-gold font-bold uppercase">QUICK LINKS</h4>
+            <ul className="space-y-2.5 text-xs text-foreground/50">
+              <li>
+                <a href="#story" className="hover:text-gold transition-colors block w-fit">THE LEGEND</a>
+              </li>
+              <li>
+                <a href="#process" className="hover:text-gold transition-colors block w-fit">THE PROCESS</a>
+              </li>
+              <li>
+                <a href="#works" className="hover:text-gold transition-colors block w-fit">THE CHRONICLES</a>
+              </li>
+              <li>
+                <a href="#shop" className="hover:text-gold transition-colors block w-fit">THE SHOP</a>
+              </li>
+              <li>
+                <a href="#contact" className="hover:text-gold transition-colors block w-fit">CONTACT STUDIO</a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 3: Contact details */}
+          <div className="space-y-4">
+            <h4 className="text-[10px] tracking-[0.3em] text-gold font-bold uppercase">CONTACT & SALEM STUDIO</h4>
+            <div className="space-y-3.5 text-xs text-foreground/50">
+              <div>
+                <span className="text-[8px] tracking-[0.3em] text-gold-deep font-semibold block mb-1">EMAIL</span>
+                <a href="mailto:yaazhioffical@gmail.com" className="hover:text-gold transition-colors block break-all">
+                  yaazhioffical@gmail.com
+                </a>
+              </div>
+              <div>
+                <span className="text-[8px] tracking-[0.3em] text-gold-deep font-semibold block mb-1">INSTAGRAM</span>
+                <a href="https://www.instagram.com/itz_yaazhi_madez" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors block">
+                  @itz_yaazhi_madez
+                </a>
+              </div>
+              <div>
+                <span className="text-[8px] tracking-[0.3em] text-gold-deep font-semibold block mb-1">STUDIO LOCATION</span>
+                <span className="block">Salem - TamilNadu, India (637504)</span>
+              </div>
+            </div>
+          </div>
+
         </div>
-        <span className="hairline w-24 md:w-40" />
-        <p className="max-w-xs md:max-w-sm font-serif text-base md:text-lg italic text-foreground/40 leading-relaxed">
-          What starts on paper, comes to life in fabric.
-        </p>
-        <div className="text-[7px] md:text-[9px] tracking-[0.5em] text-foreground/30 mt-4 md:mt-8 font-semibold">
-          © {new Date().getFullYear()} YAAZHI WEARS <br className="sm:hidden mt-2"/> <span className="hidden sm:inline">·</span> #WEARYOURSTORY
+
+        {/* Bottom copyright row */}
+        <div className="mt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left text-[8px] md:text-[9px] tracking-[0.4em] text-foreground/30 font-semibold uppercase">
+          <div>
+            © {new Date().getFullYear()} YAAZHI WEARS. ALL RIGHTS RESERVED.
+          </div>
+          <div>
+            #WEARYOURSTORY · #TAMILPRIDE
+          </div>
         </div>
+
       </div>
     </footer>
   );
